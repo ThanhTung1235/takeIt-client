@@ -25,15 +25,20 @@
             ],
             "styles": [
               "src/assets/css/bootstrap.min.css",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/nouislider.min.css",
+              "src/assets/css/slick-theme.css",
+              "src/assets/css/slick.css",
+              "src/assets/css/style.css",
               "src/styles.css"
             ],
             "scripts": [
               "src/assets/js/jquery.min.js",
-              "src/assets/js/main.js",
-              "src/assets/js/jquery.zoom.min.js",
               "src/assets/js/bootstrap.min.js",
+              "src/assets/js/slick.min.js",
               "src/assets/js/nouislider.min.js",
-              "src/assets/js/slick.min.js"
+              "src/assets/js/jquery.zoom.min.js",
+              "src/assets/js/main.js"
             ]
           },
           "configurations": {
