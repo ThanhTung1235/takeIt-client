@@ -13,6 +13,9 @@ export const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
+  exports: [
+    HomeComponent
+  ],
   declarations: [
     HomeComponent,
     CardComponent

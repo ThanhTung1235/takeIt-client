@@ -21,45 +21,19 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/assets/css",
-              "src/assets/js/libs"
+              "src/assets"
             ],
             "styles": [
-              "src/assets/css/bootstrap.css",
-              "src/assets/css/animate.css",
-              "src/assets/css/aos.css",
-              "src/assets/css/bootstrap-datepicker.css",
-              "src/assets/css/flaticon.css",
-              "src/assets/css/icomoon.css",
-              "src/assets/css/ionicons.min.css",
-              "src/assets/css/jquery.timepicker.css",
-              "src/assets/css/magnific-popup.css",
-              "src/assets/css/open-iconic-bootstrap.min.css",
-              "src/assets/css/owl.carousel.min.css",
-              "src/assets/css/owl.theme.default.min.css",
-              "src/assets/css/style.css",
+              "src/assets/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/js/libs/jquery.min.js",
-              "src/assets/js/libs/aos.js",
-              "src/assets/js/libs/bootstrap-datepicker.js",
-              "src/assets/js/libs/google-map.js",
-              "src/assets/js/libs/jquery.animateNumber.min.js",
-              "src/assets/js/libs/jquery.easing.1.3.js",
-              "src/assets/js/libs/jquery.magnific-popup.min.js",
-              "src/assets/js/libs/bootstrap.min.js",
-              "src/assets/js/libs/jquery.stellar.min.js",
-              "src/assets/js/libs/jquery.timepicker.min.js",
-              "src/assets/js/libs/jquery.waypoints.min.js",
-              "src/assets/js/libs/jquery-3.2.1.min.js",
-              "src/assets/js/libs/jquery-migrate-3.0.1.min.js",
-              "src/assets/js/libs/main.js",
-              "src/assets/js/libs/owl.carousel.min.js",
-              "src/assets/js/libs/popper.min.js",
-              "src/assets/js/libs/range.js",
-              "src/assets/js/libs/scrollax.min.js"
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/main.js",
+              "src/assets/js/jquery.zoom.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/nouislider.min.js",
+              "src/assets/js/slick.min.js"
             ]
           },
           "configurations": {
@@ -123,40 +97,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/css/bootstrap.css",
-              "src/assets/css/animate.css",
-              "src/assets/css/aos.css",
-              "src/assets/css/bootstrap-datepicker.css",
-              "src/assets/css/flaticon.css",
-              "src/assets/css/icomoon.css",
-              "src/assets/css/ionicons.min.css",
-              "src/assets/css/jquery.timepicker.css",
-              "src/assets/css/magnific-popup.css",
-              "src/assets/css/open-iconic-bootstrap.min.css",
-              "src/assets/css/owl.carousel.min.css",
-              "src/assets/css/owl.theme.default.min.css",
-              "src/assets/css/style.css",
+              "src/assets/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/js/libs/jquery.min.js",
-              "src/assets/js/libs/aos.js",
-              "src/assets/js/libs/bootstrap-datepicker.js",
-              "src/assets/js/libs/google-map.js",
-              "src/assets/js/libs/jquery.animateNumber.min.js",
-              "src/assets/js/libs/jquery.easing.1.3.js",
-              "src/assets/js/libs/jquery.magnific-popup.min.js",
-              "src/assets/js/libs/bootstrap.min.js",
-              "src/assets/js/libs/jquery.stellar.min.js",
-              "src/assets/js/libs/jquery.timepicker.min.js",
-              "src/assets/js/libs/jquery.waypoints.min.js",
-              "src/assets/js/libs/jquery-3.2.1.min.js",
-              "src/assets/js/libs/jquery-migrate-3.0.1.min.js",
-              "src/assets/js/libs/main.js",
-              "src/assets/js/libs/owl.carousel.min.js",
-              "src/assets/js/libs/popper.min.js",
-              "src/assets/js/libs/range.js",
-              "src/assets/js/libs/scrollax.min.js"
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/main.js",
+              "src/assets/js/jquery.zoom.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/nouislider.min.js",
+              "src/assets/js/slick.min.js"
             ]
           }
         },
