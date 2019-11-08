@@ -4,7 +4,7 @@ import { LayoutComponent } from './layout.component';
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import {HomeModule} from '../home/home.module';
+import { HomeModule } from '../home/home.module';
 export const routes: Routes = [
   {
     path: '', component: LayoutComponent,
@@ -12,17 +12,15 @@ export const routes: Routes = [
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', loadChildren: () => import('../home/home.module').then(m => m.HomeModule) },
       { path: 'create-product', loadChildren: () => import('../create-product/create-product.module').then(m => m.CreateProductModule) },
-      // tslint:disable-next-line:max-line-length
-      { path: 'product-detail/:productId', loadChildren: () => import('../product-detail/product-detail.module').then(m => m.ProductDetailModule) },
-      { path: 'product-list', loadChildren: () => import('../product-list/product-list.module').then(m => m.ProductListModule) },
+      { path: 'product/:productId', loadChildren: () => import('../product/product-detail/product-detail.module').then(m => m.ProductDetailModule) },
+      { path: 'products', loadChildren: () => import('../product/product-list/product-list.module').then(m => m.ProductListModule) },
     ]
   }
 ];
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
-    HomeModule
+    RouterModule.forChild(routes)
   ],
   declarations: [
     LayoutComponent,
@@ -30,6 +28,7 @@ export const routes: Routes = [
     FooterComponent
   ],
   exports: [
+    LayoutComponent,
     HeaderComponent,
     FooterComponent
   ],
