@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.route';
 import { LayoutModule } from './container/layout/layout.module';
 import {HomeModule} from './container/home/home.module';
+import {ProductListModule} from "./container/product-list/product-list.module";
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {HomeModule} from './container/home/home.module';
         BrowserModule,
         LayoutModule,
         RouterModule.forRoot(appRoutes),
-        HomeModule
+        HomeModule,
+        ProductListModule
     ],
   providers: [],
   bootstrap: [AppComponent]
