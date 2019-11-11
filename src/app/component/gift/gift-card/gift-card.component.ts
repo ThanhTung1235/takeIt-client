@@ -12,5 +12,4 @@ export class GiftCardComponent implements OnInit {
 
   ngOnInit() {
   }
-  
 }
