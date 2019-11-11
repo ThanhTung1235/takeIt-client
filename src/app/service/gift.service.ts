@@ -15,16 +15,16 @@ export class GiftService extends BaseService {
   getGifts(): Observable<ApiResult<GiftResponse[]>> {
     return this.httpClient.get(this.API_URL).pipe(
       map(x => {
-        return x as ApiResult<GiftResponse[]>
+        return x as ApiResult<GiftResponse[]>;
       })
-    )
+    );
   }
   saveGift(gift: Gift): Observable<ApiResult<Gift>> {
-    return this.httpClient.post(this.API_URL + "/create", gift, { headers: this.addRequestHeader }).pipe(
+    return this.httpClient.post(this.API_URL + '/create', gift, { headers: this.addRequestHeader }).pipe(
       map(response => {
         return response as ApiResult<Gift>;
       })
-    )
+    );
   }
 
 }

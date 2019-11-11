@@ -23,7 +23,8 @@ export class Gift {
         public name: string,
         public description: string,
         public gender: string,
+        // tslint:disable-next-line:variable-name
         public age_range: string,
-        
+
     ) { }
 }

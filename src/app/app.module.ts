@@ -5,21 +5,20 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.route';
 import { LayoutModule } from './container/layout/layout.module';
-import {HomeModule} from './container/home/home.module';
-import {ProductListModule} from "./container/product-list/product-list.module";
+import { HomeModule } from './container/home/home.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-    imports: [
-        BrowserModule,
-        LayoutModule,
-        RouterModule.forRoot(appRoutes),
-        HomeModule,
-        ProductListModule
-    ],
+  imports: [
+    BrowserModule,
+    LayoutModule,
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
