@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductListComponent } from './product-list.component';
 import { Routes, Router, RouterModule } from '@angular/router';
-import { TopNavComponent } from '../../layout/top-nav/top-nav.component';
+import { TopNavComponent } from '../../../component/top-nav/top-nav.component';
 import { GiftService } from 'src/app/service/gift.service';
 import { GiftCardComponent } from 'src/app/component/gift/gift-card/gift-card.component';
+import {SharedModule} from '../../../component/shared.module';
 
 export const routes: Routes = [
   {
@@ -14,12 +15,11 @@ export const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    SharedModule,
+    RouterModule.forChild(routes),
   ],
   declarations: [
-    ProductListComponent,
-    TopNavComponent,
-    GiftCardComponent
+    ProductListComponent
   ],
   bootstrap: [
     ProductListComponent

@@ -12,7 +12,7 @@ export const routes: Routes = [
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', loadChildren: () => import('../home/home.module').then(m => m.HomeModule) },
       { path: 'product-add', loadChildren: () => import('../product/product-create/product-create.module').then(m => m.ProductCreateModule) },
-      { path: 'product/:productId', loadChildren: () => import('../product/product-detail/product-detail.module').then(m => m.ProductDetailModule) },
+      { path: 'product/:id', loadChildren: () => import('../product/product-detail/product-detail.module').then(m => m.ProductDetailModule) },
       { path: 'products', loadChildren: () => import('../product/product-list/product-list.module').then(m => m.ProductListModule) }
 
     ]

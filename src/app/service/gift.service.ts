@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { BaseService } from '../base.service';
-import { Observable, from } from 'rxjs';
-import { ApiResult } from '../model/api-results';
-import { GiftResponse, Gift } from '../model/gift';
-import { environment } from '../../environments/environment';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {BaseService} from '../base.service';
+import {Observable, from} from 'rxjs';
+import {ApiResult} from '../model/api-results';
+import {GiftResponse, Gift} from '../model/gift';
+import {environment} from '../../environments/environment';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +19,19 @@ export class GiftService extends BaseService {
       })
     );
   }
+
   saveGift(gift: Gift): Observable<ApiResult<Gift>> {
-    return this.httpClient.post(this.API_URL + '/create', gift, { headers: this.addRequestHeader }).pipe(
+    return this.httpClient.post(this.API_URL + '/create', gift, {headers: this.addRequestHeader}).pipe(
       map(response => {
         return response as ApiResult<Gift>;
+      })
+    );
+  }
+
+  getGift(id: number): Observable<ApiResult<GiftResponse>> {
+    return this.httpClient.get(`${this.API_URL}/${id}`, {headers: this.addRequestHeader}).pipe(
+      map(response => {
+        return response as ApiResult<GiftResponse>;
       })
     );
   }
