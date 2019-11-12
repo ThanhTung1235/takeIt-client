@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {GiftResponse} from '../../model/gift';
 import {Pagination} from '../../model/api-results';
@@ -12,19 +12,29 @@ import {map} from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
-  gift$: Observable<GiftResponse[]>;
+  giftsShirt$: Observable<GiftResponse[]>;
+  giftsTrousers$: Observable<GiftResponse[]>;
   pagination: Pagination;
 
   constructor(private giftService: GiftService) {
   }
 
   ngOnInit() {
-    this.getGifts();
+    this.getGiftsShirt();
+    this.getGiftsTrousers();
   }
 
 
-  getGifts() {
-    this.gift$ = this.giftService.getGifts().pipe(
+  getGiftsShirt() {
+    this.giftsShirt$ = this.giftService.getGiftsByCateId(1).pipe(
+      map(x => {
+        return x.data;
+      })
+    );
+  }
+
+  getGiftsTrousers() {
+    this.giftsTrousers$ = this.giftService.getGiftsByCateId(2).pipe(
       map(x => {
         return x.data;
       })

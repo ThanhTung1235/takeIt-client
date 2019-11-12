@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import {GiftCardComponent} from './gift/gift-card/gift-card.component';
 import {TopNavComponent} from './top-nav/top-nav.component';
 import {RouterModule} from '@angular/router';
+import {SlideComponent} from './slide/slide.component';
 
 
 
 @NgModule({
   declarations: [
     GiftCardComponent,
-    TopNavComponent
+    TopNavComponent,
+    SlideComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import {RouterModule} from '@angular/router';
   ],
   exports: [
     GiftCardComponent,
-    TopNavComponent
+    TopNavComponent,
+    SlideComponent
   ]
 })
 export class SharedModule { }
