@@ -28,17 +28,18 @@ export class GiftService extends BaseService {
     );
   }
 
-  getGiftsByCateId(id: number): Observable<ApiResult<GiftResponse[]>> {
-    return this.httpClient.get(`${this.API_URL}+ "cate"`).pipe(
-      map(x => {
-        return x as ApiResult<GiftResponse[]>;
-      }
-  }
-
   getGift(id: number): Observable<ApiResult<GiftResponse>> {
     return this.httpClient.get(`${this.API_URL}/${id}`, {headers: this.addRequestHeader}).pipe(
       map(response => {
         return response as ApiResult<GiftResponse>;
+      })
+    );
+  }
+
+  getGiftsByCateId(id: number): Observable<ApiResult<GiftResponse[]>> {
+    return this.httpClient.get(`${this.API_URL}+ "cate"`).pipe(
+      map(x => {
+        return x as ApiResult<GiftResponse[]>;
       })
     );
   }
