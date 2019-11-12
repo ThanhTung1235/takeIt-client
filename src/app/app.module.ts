@@ -4,10 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.route';
-import { LayoutModule } from './container/layout/layout.module';
-import { HomeModule } from './container/home/home.module';
 import { HttpClientModule } from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
@@ -15,9 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    LayoutModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

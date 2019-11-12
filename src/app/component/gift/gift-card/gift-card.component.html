@@ -1,13 +1,15 @@
 <div class="row">
   <div *ngFor="let g of gifts">
-    <div class="col-md-3 col-sm-6 col-xs-6">
+    <div class="col-md-4 col-sm-6 col-xs-6">
       <div class="product product-single">
         <div class="product-thumb">
-          <img src="https://i.pinimg.com/474x/33/44/f7/3344f7435d4fe7001870bb23dbf07b94.jpg" alt="">
+          <img [src]="g.thumbnail" alt="">
         </div>
         <div class="product-body">
-          <h2 class="product-name"><a href="#"></a></h2>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+          <h2 class="product-name"><a href="#">{{g.name}}</a></h2>
+          <p style="white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;">{{g.description}}</p>
           <div class="product-btns">
             <button class="primary-btn add-to-cart">Xin nhận món quà</button>
           </div>

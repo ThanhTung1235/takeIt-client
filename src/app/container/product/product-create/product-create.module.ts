@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreateProductComponent } from './create-product.component';
+import { ProductCreateComponent } from './product-create.component';
 import { Routes, RouterModule } from '@angular/router';
 export const routes: Routes = [
   {
-    path: '', component: CreateProductComponent,
+    path: '', component: ProductCreateComponent,
   }
 ]
 @NgModule({
@@ -12,6 +12,6 @@ export const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CreateProductComponent]
+  declarations: [ProductCreateComponent]
 })
-export class CreateProductModule { }
+export class ProductCreateModule { }
