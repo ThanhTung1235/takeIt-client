@@ -29,7 +29,8 @@
               "src/assets/css/slick-theme.css",
               "src/assets/css/font-awesome.min.css",
               "src/assets/css/style.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/custom.style.css"
             ],
             "scripts": [
               "src/assets/js/jquery.min.js",

@@ -7,12 +7,7 @@
       <div class="category-nav">
         <span class="category-header">Categories <i class="fa fa-list"></i></span>
         <ul class="category-list">
-          <li><a href="#">Áo</a></li>
-          <li><a href="#">Quần</a></li>
-          <li><a href="#">Đồ chơi</a></li>
-          <li><a href="#">Đồ dùng</a></li>
-          <li><a href="#">Xe đẩy</a></li>
-          <li><a href="#">Giày-dép</a></li>
+          <li *ngFor="let c of category$ | async"><a [routerLink]="['/products']" [queryParams]="{cateId: c.id}" >{{c.name}}</a></li>
         </ul>
       </div>
       <!-- /category nav -->
@@ -25,7 +20,7 @@
           <li><a href="#">Shop</a></li>
           <li><a href="#">Sales</a></li>
           <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-              aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
+                                                   aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
             <ul class="custom-menu">
               <li><a href="index.html">Home</a></li>
               <li><a href="products.html">Products</a></li>
@@ -50,7 +45,7 @@
     <!-- home wrap -->
     <div class="home-wrap">
       <!-- home slick -->
-        <app-slide></app-slide>
+      <app-slide></app-slide>
       <!-- /home slick -->
     </div>
 

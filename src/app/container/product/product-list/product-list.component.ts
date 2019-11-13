@@ -4,6 +4,7 @@ import {Gift, GiftResponse} from 'src/app/model/gift';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Pagination} from 'src/app/model/api-results';
+import {ActivatedRoute, RouterEvent, RouterLinkActive} from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -14,11 +15,20 @@ export class ProductListComponent implements OnInit {
   gift$: Observable<GiftResponse[]>;
   pagination: Pagination;
 
-  constructor(private giftService: GiftService) {
+  constructor(private giftService: GiftService,
+              private route: ActivatedRoute) {
+
   }
 
   ngOnInit() {
-    this.getGifts();
+    this.route.queryParamMap.subscribe(queryParams => {
+      const id = queryParams.get('cateId');
+      if (id == null) {
+        this.getGifts();
+      } else {
+        this.getGiftByCateId(queryParams.get('cateId'));
+      }
+    });
   }
 
 
@@ -28,5 +38,13 @@ export class ProductListComponent implements OnInit {
         return x.data;
       })
     );
+  }
+
+  getGiftByCateId(cateId) {
+    this.gift$ = this.giftService.getGiftsByCateId(cateId).pipe(map(
+      x => {
+        return x.data;
+      }
+    ));
   }
 }
