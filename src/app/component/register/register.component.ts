@@ -1,0 +1,39 @@
+import {Component, OnInit} from '@angular/core';
+import {Account} from '../../model/account';
+import {AccountService} from '../../service/account.service';
+import {map} from 'rxjs/operators';
+
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
+})
+export class RegisterComponent implements OnInit {
+  account = new Account('', '', '');
+  confirmPass: boolean;
+
+  constructor(private accountService: AccountService) {
+  }
+
+  ngOnInit() {
+  }
+
+  onSubmit() {
+    let confirm = this.account.confirmPassword;
+    let password = this.account.password;
+    if (confirm === password) {
+      this.accountService.register(this.account).subscribe(x => {
+        if (x.status === 200) {
+          alert('create success');
+        } else {
+          alert('create fail');
+        }
+      });
+      console.log(this.account);
+      this.confirmPass = false;
+    } else {
+      this.confirmPass = true;
+    }
+
+  }
+}

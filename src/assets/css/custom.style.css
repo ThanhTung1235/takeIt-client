@@ -5,3 +5,24 @@
   -moz-filter: blur(4px);
   filter: blur(4px);
 }
+.tab{
+  display: none;
+}
+.tab-active{
+  display: block;
+}
+.bg-white{
+  background: white;
+  min-width: 200px;
+  max-width: 200px;
+}
+.nav-item-action{
+  display: block;
+  padding: 10px 0px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.icon-action{
+  margin-right: 15px;
+  color: #F8694A;
+}

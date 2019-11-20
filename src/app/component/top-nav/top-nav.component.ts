@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
-import {GiftResponse} from '../../model/gift';
+import {Gender, GiftResponse} from '../../model/gift';
 import {Pagination} from '../../model/api-results';
 import {GiftService} from '../../service/gift.service';
 import {CategoryService} from '../../service/category.service';

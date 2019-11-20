@@ -37,7 +37,7 @@ export class GiftService extends BaseService {
   }
 
   getGiftsByCateId(id: number): Observable<ApiResult<GiftResponse[]>> {
-    return this.httpClient.get(`${this.API_URL}/cate/${id}`).pipe(
+    return this.httpClient.get(`${this.API_URL}?cate=${id}`).pipe(
       map(x => {
         return x as ApiResult<GiftResponse[]>;
       })
