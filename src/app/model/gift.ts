@@ -28,5 +28,4 @@ export class Gift {
 
     ) { }
 }
-export enum CateId {
-}
+
