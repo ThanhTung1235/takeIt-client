@@ -29,14 +29,14 @@
               "src/assets/css/slick-theme.css",
               "src/assets/css/font-awesome.min.css",
               "src/assets/css/style.css",
-              "src/styles.css"
+              "src/assets/css/profile.css",
+              "src/styles.css",
+              "src/assets/css/custom.style.css"
             ],
             "scripts": [
               "src/assets/js/jquery.min.js",
               "src/assets/js/popper.min.js",
               "src/assets/js/bootstrap.min.js",
-              "src/assets/js/slick.min.js",
-              "src/assets/js/jquery.zoom.min.js",
               "src/assets/js/main.js"
             ]
           },

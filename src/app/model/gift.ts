@@ -3,6 +3,7 @@ export class GiftResponse {
         public id: number,
         public name: string,
         public description: string,
+        public thumbnail: string,
         public gender: string,
         public ageRange: string,
         public accountName: string,
@@ -28,4 +29,11 @@ export class Gift {
 
     ) { }
 }
+<<<<<<< HEAD
 
+=======
+export enum Gender {
+  Trai= 1,
+  Gái
+}
+>>>>>>> 1cede464213dc8a1f46affef5566297f09962352

@@ -4,6 +4,10 @@ import {GiftCardComponent} from './gift/gift-card/gift-card.component';
 import {TopNavComponent} from './top-nav/top-nav.component';
 import {RouterModule} from '@angular/router';
 import {SlideComponent} from './slide/slide.component';
+import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -11,16 +15,23 @@ import {SlideComponent} from './slide/slide.component';
   declarations: [
     GiftCardComponent,
     TopNavComponent,
-    SlideComponent
+    SlideComponent,
+    ProfileComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     GiftCardComponent,
     TopNavComponent,
-    SlideComponent
+    SlideComponent,
+    ProfileComponent,
+    LoginComponent,
+    RegisterComponent
   ]
 })
 export class SharedModule { }

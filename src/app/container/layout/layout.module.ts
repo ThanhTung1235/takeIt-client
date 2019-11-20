@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeModule } from '../home/home.module';
+import {SharedModule} from '../../component/shared.module';
 export const routes: Routes = [
   {
     path: '', component: LayoutComponent,
@@ -21,7 +22,8 @@ export const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ],
   declarations: [
     LayoutComponent,

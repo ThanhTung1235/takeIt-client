@@ -7,12 +7,7 @@
       <div class="category-nav">
         <span class="category-header">Categories <i class="fa fa-list"></i></span>
         <ul class="category-list">
-          <li><a href="#">Áo</a></li>
-          <li><a href="#">Quần</a></li>
-          <li><a href="#">Đồ chơi</a></li>
-          <li><a href="#">Đồ dùng</a></li>
-          <li><a href="#">Xe đẩy</a></li>
-          <li><a href="#">Giày-dép</a></li>
+          <li *ngFor="let c of category$ | async"><a [routerLink]="['/products']" [queryParams]="{cateId: c.id}" >{{c.name}}</a></li>
         </ul>
       </div>
       <!-- /category nav -->
@@ -22,17 +17,6 @@
         <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
         <ul class="menu-list">
           <li><a href="#">Home</a></li>
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">Sales</a></li>
-          <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-              aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
-            <ul class="custom-menu">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="products.html">Products</a></li>
-              <li><a href="product-page.html">Product Details</a></li>
-              <li><a href="login.html">Checkout</a></li>
-            </ul>
-          </li>
         </ul>
       </div>
       <!-- menu nav -->
@@ -50,7 +34,7 @@
     <!-- home wrap -->
     <div class="home-wrap">
       <!-- home slick -->
-        <app-slide></app-slide>
+      <app-slide></app-slide>
       <!-- /home slick -->
     </div>
 
@@ -150,7 +134,7 @@
           <h3 class="title">Áo</h3>
         </div>
       </div>
-      <app-gift-card [gifts]="giftsShirt$ | async"></app-gift-card>
+      <app-gift-card [gifts]="giftsShirt$ | async | slice:0:3"></app-gift-card>
     </div>
     <!-- /row -->
     <!-- row -->
@@ -161,7 +145,7 @@
         </div>
       </div>
       <!-- Product Single -->
-      <app-gift-card [gifts]="giftsTrousers$ | async"></app-gift-card>
+      <app-gift-card [gifts]="giftsTrousers$ | async | slice:0:3"></app-gift-card>
       <!-- /Product Single -->
     </div>
     <!-- /row -->
