@@ -30,6 +30,6 @@ export class Gift {
     ) { }
 }
 export enum Gender {
-  Trai= 1,
-  Gái
+    Trai = 1,
+    Gái = 2
 }

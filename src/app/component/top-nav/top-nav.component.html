@@ -4,7 +4,7 @@
     <div id="responsive-nav">
       <!-- category nav -->
       <div class="category-nav show-on-click">
-        <span class="category-header" style="cursor: pointer" (click)="showSideBar()">Categories <i class="fa fa-list"></i></span>
+        <span class="category-header" style="cursor: pointer" (click)="showSideBar()">Danh mục <i class="fa fa-list"></i></span>
         <ul [class.open]="showNav" class="category-list">
           <li *ngFor="let c of category$ | async"><a [routerLink]="['/products']" [queryParams]="{cateId: c.id}" >{{c.name}}</a></li>
         </ul>

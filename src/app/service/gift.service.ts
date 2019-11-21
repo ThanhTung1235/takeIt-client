@@ -10,10 +10,12 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GiftService extends BaseService {
-  API_URL = environment.apiHost + '/products';
+  API_URL_PUBLIC = environment.apiPublish + '/products';
+  API_URL_STAF = environment.apiPublish + '/products';
 
-  getGifts(): Observable<ApiResult<GiftResponse[]>> {
-    return this.httpClient.get(this.API_URL).pipe(
+
+  search(): Observable<ApiResult<GiftResponse[]>> {
+    return this.httpClient.get(this.API_URL_PUBLIC).pipe(
       map(x => {
         return x as ApiResult<GiftResponse[]>;
       })
@@ -21,7 +23,7 @@ export class GiftService extends BaseService {
   }
 
   saveGift(gift: Gift): Observable<ApiResult<Gift>> {
-    return this.httpClient.post(this.API_URL + '/create', gift, {headers: this.addRequestHeader}).pipe(
+    return this.httpClient.post(this.API_URL_PUBLIC + '/create', gift, {headers: this.addRequestHeader}).pipe(
       map(response => {
         return response as ApiResult<Gift>;
       })
@@ -29,17 +31,9 @@ export class GiftService extends BaseService {
   }
 
   getGift(id: number): Observable<ApiResult<GiftResponse>> {
-    return this.httpClient.get(`${this.API_URL}/${id}`, {headers: this.addRequestHeader}).pipe(
+    return this.httpClient.get(`${this.API_URL_PUBLIC}/${id}`, {headers: this.addRequestHeader}).pipe(
       map(response => {
         return response as ApiResult<GiftResponse>;
-      })
-    );
-  }
-
-  getGiftsByCateId(id: number): Observable<ApiResult<GiftResponse[]>> {
-    return this.httpClient.get(`${this.API_URL}?cate=${id}`).pipe(
-      map(x => {
-        return x as ApiResult<GiftResponse[]>;
       })
     );
   }

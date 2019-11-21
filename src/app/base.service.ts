@@ -18,7 +18,7 @@ export class BaseService {
     }
     token = storage;
     return new HttpHeaders({
-      'Authorization': 'bearer ' + token
+      'Authorization': 'Bearer ' + token
     })
   }
 

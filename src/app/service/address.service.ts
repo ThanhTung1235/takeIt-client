@@ -10,16 +10,16 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AddressService extends BaseService {
-  API_URL = environment.apiHost + '/address';
+  API_URL_PUBLISH = environment.apiPublish + '/address';
   getCities(): Observable<ApiResult<City[]>> {
-    return this.httpClient.get(this.API_URL + "/cities").pipe(
+    return this.httpClient.get(this.API_URL_PUBLISH + "/cities").pipe(
       map(x => {
         return x as ApiResult<City[]>
       })
     )
   }
   getDistricts(id: number): Observable<ApiResult<District[]>> {
-    return this.httpClient.get(`${this.API_URL}?id=${id}`).pipe(
+    return this.httpClient.get(`${this.API_URL_PUBLISH}?ct-id=${id}`).pipe(
       map(x => {
         return x as ApiResult<District[]>
       })
