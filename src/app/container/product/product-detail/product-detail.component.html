@@ -7,51 +7,15 @@
     <div class="row">
       <!--  Product Details -->
       <div class="product product-details clearfix">
-        <div class="col-md-6">
-          <div id="product-main-view">
-            <div class="product-view">
-              <img src="https://xephang.net/upl/news/2019/5/dia-chi-shop-ban-quan-ao-tre-em-tai-ha-noi-dep-nhat-thoi-trang-a.jpg" alt="">
-            </div>
-            <div class="product-view">
-              <img src="https://www.bexinhshop.vn/image/data/29-5-2018/damvoanmaxibiden1.jpg" alt="product-rating">
-            </div>
-            <div class="product-view">
-              <img src="https://babi.vn/images/companies/1/Up%20hinh%20san%20pham/361323/untitled%20folder/bo-cham-bi-cho-be-gai.jpg?1525852855552./img/main-product03.jpg" alt="">
-            </div>
-            <div class="product-view">
-              <img src="https://www.bexinhshop.vn/image/data/4-8-2017/DAMCHAMBIDEN.jpg./img/main-product04.jpg" alt="">
-            </div>
-          </div>
-          <div id="product-view">
-            <div class="product-view">
-              <img src="https://xephang.net/upl/news/2019/5/dia-chi-shop-ban-quan-ao-tre-em-tai-ha-noi-dep-nhat-thoi-trang-a.jpg" alt="">
-            </div>
-            <div class="product-view">
-              <img src="https://www.bexinhshop.vn/image/data/29-5-2018/damvoanmaxibiden1.jpg./img/thumb-product02.jpg" alt="">
-            </div>
-            <div class="product-view">
-              <img src="https://babi.vn/images/companies/1/Up%20hinh%20san%20pham/361323/untitled%20folder/bo-cham-bi-cho-be-gai.jpg?1525852855552./img/main-product03.jpg" alt="">
-            </div>
-            <div class="product-view">
-              <img src="https://www.bexinhshop.vn/image/data/4-8-2017/DAMCHAMBIDEN.jpg./img/main-product04.jpg" alt="">
-            </div>
-          </div>
+        <div class="col-md-9">
+          <app-slide></app-slide>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
           <div class="product-body">
-            <h2 class="product-name">{{gift?.name}}</h2>
-            <p><strong>Trạng thái:</strong> Trong kho</p>
-            <p>{{gift?.description}}</p>
+            <h2 class="product-name text-capitalize">{{gift?.name}}</h2>
             <div class="product-options">
-              <ul class="color-option">
-                <li><span class="text-uppercase">Màu:</span></li>
-                <li class="active"><a href="#" style="background-color:#475984;"></a></li>
-                <li><a href="#" style="background-color:#8A2454;"></a></li>
-                <li><a href="#" style="background-color:#BF6989;"></a></li>
-                <li><a href="#" style="background-color:#9A54D8;"></a></li>
-              </ul>
             </div>
-
+            <p>{{gift?.description}}</p>
             <div class="product-btns">
               <button class="primary-btn add-to-cart">Nhận ngay</button>
               <div class="pull-right">
@@ -91,8 +55,11 @@
                           </div>
                         </div>
                         <div class="review-body">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.Duis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                          </p>
                         </div>
                       </div>
 
@@ -109,8 +76,11 @@
                           </div>
                         </div>
                         <div class="review-body">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.Duis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                          </p>
                         </div>
                       </div>
 
@@ -127,8 +97,11 @@
                           </div>
                         </div>
                         <div class="review-body">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.Duis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                          </p>
                         </div>
                       </div>
 
@@ -195,7 +168,7 @@
       <!-- section title -->
       <div class="col-md-12">
         <div class="section-title">
-          <h2 class="title">Sản phẩm tương tự</h2>
+          <h2 class="title">Những gift liên quan</h2>
         </div>
       </div>
       <!-- section title -->
@@ -205,7 +178,9 @@
         <div class="product product-single">
           <div class="product-thumb">
             <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Xem ngay</button>
-            <img src="https://my-test-11.slatic.net/p/e482be0c7df8a3ddb5785cf98d7a61e1.jpg_600x600q80.jpg./img/product04.jpg" alt="">
+            <img
+              src="https://my-test-11.slatic.net/p/e482be0c7df8a3ddb5785cf98d7a61e1.jpg_600x600q80.jpg./img/product04.jpg"
+              alt="">
           </div>
           <div class="product-body">
             <div class="product-rating">
