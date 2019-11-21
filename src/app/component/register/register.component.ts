@@ -19,12 +19,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    let confirm = this.account.confirmPassword;
-    let password = this.account.password;
+    const confirm = this.account.confirmPassword;
+    const password = this.account.password;
     if (confirm === password) {
       this.accountService.register(this.account).subscribe(x => {
         if (x.status === 200) {
           alert('create success');
+          // let token = x.data.accessToken
+          // localStorage.setItem("token", token)
         } else {
           alert('create fail');
         }
