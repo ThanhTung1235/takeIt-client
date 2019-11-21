@@ -34,18 +34,10 @@ export class TopNavComponent implements OnInit {
     }
   }
   getGiftsShirt() {
-    this.giftsShirt$ = this.giftService.getGiftsByCateId(1).pipe(
-      map(x => {
-        return x.data;
-      })
-    );
+
   }
 
   getGiftsTrousers() {
-    this.giftsTrousers$ = this.giftService.getGiftsByCateId(2).pipe(
-      map(x => {
-        return x.data;
-      })
-    );
+
   }
 }

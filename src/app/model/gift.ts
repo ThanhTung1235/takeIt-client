@@ -29,11 +29,7 @@ export class Gift {
 
     ) { }
 }
-<<<<<<< HEAD
-
-=======
 export enum Gender {
-  Trai= 1,
-  Gái
+    Trai = 1,
+    Gái = 2
 }
->>>>>>> 1cede464213dc8a1f46affef5566297f09962352
