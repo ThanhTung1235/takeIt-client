@@ -10,17 +10,17 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AccountService extends BaseService {
-  API_URL = environment.apiAuth + '/register';
+  API_URL = environment.apiAuth;
 
   register(account: Account): Observable<ApiResult<Account>> {
-    return this.httpClient.post(this.API_URL, account).pipe(
+    return this.httpClient.post(`${this.API_URL}/register`, account).pipe(
       map(x => {
         return x as ApiResult<Account>;
       })
     );
   }
   login(account: Account): Observable<ApiResult<Credential>> {
-    return this.httpClient.post(this.API_URL, account).pipe(
+    return this.httpClient.post(`${this.API_URL}/login`, account).pipe(
       map(x => {
         return x as ApiResult<Credential>;
       })

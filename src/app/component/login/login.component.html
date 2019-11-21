@@ -2,15 +2,19 @@
   <div class="section-title">
     <h3 class="title">Đăng nhập</h3>
   </div>
-  <div class="form-group">
-    <input class="input" type="text" name="first-name" placeholder="Tên tài khoản">
-  </div>
-  <div class="form-group">
-    <input class="input" type="password" name="last-name" placeholder="Mật Khẩu">
-  </div>
-  <div class="form-group">
-    <input class="btn btn-primary btn-block" type="submit"  name="last-name" placeholder="Last Name">
+  <form (ngSubmit)="onSubmit()" #accountForm="ngForm" action="">
+    <div class="form-group">
+      <input [(ngModel)]="account.username" #username="ngModel" class="input" type="text" name="username" placeholder="Tên tài khoản">
+      <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">Không được bỏ trống trường này</div>
+    </div>
+    <div class="form-group">
+      <input [(ngModel)]="account.password" #password="ngModel" class="input" type="password" name="password" placeholder="Mật Khẩu" required>
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">Không được bỏ trống trường này</div>
+    </div>
+    <div class="form-group">
+      <input [disabled]="!accountForm.form.valid" class="btn btn-primary btn-block" type="submit"  name="submit">
+    </div>
+    <p class="text-center">Bạn đã có tài khoản chưa? <a [routerLink]="['/home']" [queryParams]="{action: 'register'}">Đăng ký</a></p>
+  </form>
 
-  </div>
-  <p class="text-center">Bạn đã có tài khoản chưa? <a [routerLink]="['/home']" [queryParams]="{action: 'register'}">Đăng ký</a></p>
 </div>
