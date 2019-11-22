@@ -29,22 +29,47 @@
               <div class="header-btns-icon">
                 <i class="fa fa-user-o"></i>
               </div>
-              <strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
+              <strong class="text-uppercase">Tài khoản <i class="fa fa-caret-down"></i></strong>
             </div>
-            <a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
+
+            <ng-template [ngIf]="!isLogin">
+              <div class="nav-action">
+                <span class="nav-item-action sub-item" data-toggle="modal" data-target="#exampleModalCenter"
+                  [routerLink]="['/home']" [queryParams]="{action: 'login'}" class="">Đăng nhập</span> /
+
+                <span class="nav-item-action sub-item" data-toggle="modal" data-target="#exampleModalCenter"
+                  [routerLink]="['/home']" [queryParams]="{action: 'register'}" class="">Đăng ký</span>
+              </div>
+            </ng-template>
+
             <ul class="custom-menu">
-              <li>
-                <div class="nav-item-action">
-                  <i class="fa fa-user-o icon-action"></i> my account
-                </div>
-              </li>
-              <li>
-                  <div type="button" class="nav-item-action" data-toggle="modal" data-target="#exampleModalCenter"
-                          [routerLink]="['/home']" [queryParams]="{action: 'login'}">
-                    <i class="fa fa-unlock-alt icon-action"></i> Login
+              <ng-template [ngIf]="isLogin">
+                <li>
+                  <div class="nav-item-action">
+                    <i class="fa fa-user-o icon-action"></i> Thanh Tùng
                   </div>
-              </li>
-              <li><a href="#"><i class="fa fa-user-plus"></i> Create Account</a></li>
+                </li>
+                <li>
+                  <div class="nav-item-action" (click)="logout()">
+                    <i class="fa fa-user-o icon-action"></i> Đăng xuất
+                  </div>
+                </li>
+              </ng-template>
+
+              <ng-template [ngIf]="!isLogin">
+                <li>
+                  <div type="button" class="nav-item-action" data-toggle="modal" data-target="#exampleModalCenter"
+                    [routerLink]="['/home']" [queryParams]="{action: 'login'}">
+                    <i class="fa fa-unlock-alt icon-action"></i> Đăng nhập
+                  </div>
+                </li>
+                <li>
+                  <div type="button" class="nav-item-action" data-toggle="modal" data-target="#exampleModalCenter"
+                    [routerLink]="['/home']" [queryParams]="{action: 'register'}">
+                    <i class="fa fa-unlock-alt icon-action"></i> Đăng ký
+                  </div>
+                </li>
+              </ng-template>
             </ul>
           </li>
           <!-- /Account -->
@@ -63,12 +88,8 @@
 </header>
 <!-- /HEADER -->
 
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">

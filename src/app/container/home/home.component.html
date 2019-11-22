@@ -7,7 +7,7 @@
       <div class="category-nav">
         <span class="category-header">Categories <i class="fa fa-list"></i></span>
         <ul class="category-list">
-          <li *ngFor="let c of category$ | async"><a [routerLink]="['/products']" [queryParams]="{cateId: c.id}" >{{c.name}}</a></li>
+          <li *ngFor="let c of category$ | async"><a [routerLink]="['/products']" [queryParams]="{cate: c.name}" >{{c.name}}</a></li>
         </ul>
       </div>
       <!-- /category nav -->

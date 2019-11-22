@@ -1,23 +1,25 @@
-import {Component, OnInit} from '@angular/core';
-import {CategoryService} from '../../../service/category.service';
-import {Observable} from 'rxjs';
-import {GiftResponse} from '../../../model/gift';
-import {Pagination} from '../../../model/api-results';
-import {Category} from '../../../model/category';
-import {filter, map} from 'rxjs/operators';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {withIdentifier} from 'codelyzer/util/astQuery';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CategoryService } from '../../../service/category.service';
+import { Observable, Subscription } from 'rxjs';
+import { GiftResponse } from '../../../model/gift';
+import { Pagination } from '../../../model/api-results';
+import { Category } from '../../../model/category';
+import { filter, map } from 'rxjs/operators';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { withIdentifier } from 'codelyzer/util/astQuery';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   category$: Observable<Category[]>;
   pagination: Pagination;
   showLoginForm: boolean;
   showRegisterForm: boolean;
+  isLogin: boolean;
+  sub: Subscription;
 
   constructor(
     private categoryService: CategoryService,
@@ -27,7 +29,14 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(
+    let apiKey = localStorage.getItem("_apikey");
+    if (apiKey != null) {
+      this.isLogin = true;
+    } else {
+      this.isLogin = false;
+    }
+
+    this.sub = this.activatedRoute.queryParams.subscribe(
       x => {
         let params = x['action'];
         if (params === 'login') {
@@ -55,6 +64,9 @@ export class HeaderComponent implements OnInit {
           this.showLoginForm = false;
           this.showRegisterForm = true;
         }
+        if (lastPath === 'logout') {
+          
+        }
       }
     );
   }
@@ -63,5 +75,12 @@ export class HeaderComponent implements OnInit {
     this.category$ = this.categoryService.getAll().pipe(
       map(x => x.data)
     );
+  }
+  logout() {
+    localStorage.removeItem("_apikey");
+    this.isLogin = false;
+  }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
