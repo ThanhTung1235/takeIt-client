@@ -31,7 +31,10 @@
               </div>
               <strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
             </div>
-            <a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
+            <div type="button" class="nav-item-action" data-toggle="modal" data-target="#exampleModalCenter"
+                 [routerLink]="['/home']" [queryParams]="{action: 'login'}">
+              <i class="fa fa-unlock-alt icon-action"></i> Login
+            </div> / <a href="#" class="text-uppercase">Join</a>
             <ul class="custom-menu">
               <li>
                 <div class="nav-item-action">
