@@ -1021,7 +1021,7 @@ textarea.input {
   width: 60px;
 }
 .product-thumb{
-  height: 250px;
+  height: 200px;
   overflow: hidden;
 }
 .product.product-widget .product-thumb>img {
@@ -1319,7 +1319,6 @@ textarea.input {
 }
 
 .product.product-details .product-options {
-  padding-top: 30px;
   margin-bottom: 15px;
   border-top: 1px solid #DADADA;
   margin-top: 15px;

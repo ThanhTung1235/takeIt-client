@@ -10,6 +10,7 @@
 		<div class="row">
 			<!-- ASIDE -->
 			<div id="aside" class="col-md-3">
+				<button _ngcontent-kyr-c10="" (click)="refreshSearch()" class="primary-btn btn-block">Làm mới tìm kiếm</button>
 				<div class="aside">
 					<h3 class="aside-title">Địa chỉ</h3>
 					<ul class="list-links">
@@ -21,9 +22,10 @@
 							</select>
 						</li>
 						<li>
-							<select class="input spacing-address" [(ngModel)]="district">
+							<select class="input spacing-address" [(ngModel)]="district"
+								(ngModelChange)="onDistrictChange($event)">
 								<option [value]="district">{{district.name}}</option>
-								<option *ngFor="let c of districts$ | async" [ngValue]="c.id">{{c.name}}</option>
+								<option *ngFor="let c of districts$ | async" [ngValue]="c">{{c.name}}</option>
 							</select>
 						</li>
 					</ul>
@@ -34,8 +36,10 @@
 				<div class="aside">
 					<h3 class="aside-title">Giới tính</h3>
 					<ul class="list-links">
-						<li class="active"><a href="#">Nam</a></li>
-						<li><a href="#">Nữ</a></li>
+						<li><a [routerLink]="['/products']" [queryParams]="{gender: '1'}"
+								[queryParamsHandling]="'merge'">Nam</a></li>
+						<li><a [routerLink]="['/products']" [queryParams]="{gender: '2'}"
+								[queryParamsHandling]="'merge'">Nữ</a></li>
 					</ul>
 				</div>
 				<!-- /aside widget -->
@@ -44,10 +48,22 @@
 				<div class="aside">
 					<h3 class="aside-title">Độ tuổi</h3>
 					<ul class="list-links">
-						<li class="active"><a href="#">0 đển 6 Tháng</a></li>
-						<li><a href="#">6 đển 12 Tháng</a></li>
-						<li><a href="#">1 đển 3 Tuổi</a></li>
-						<li><a href="#">Trên 4 tuổi</a></li>
+						<li>
+							<a [routerLink]="['/products']" [queryParams]="{age: '1'}" [queryParamsHandling]="'merge'">0
+								đển 6 Tháng</a>
+						</li>
+						<li>
+							<a [routerLink]="['/products']" [queryParams]="{age: '2'}" [queryParamsHandling]="'merge'">6
+								đển 12 Tháng</a>
+						</li>
+						<li>
+							<a [routerLink]="['/products']" [queryParams]="{age: '3'}" [queryParamsHandling]="'merge'">1
+								đển 3 Tuổi</a>
+						</li>
+						<li>
+							<a [routerLink]="['/products']" [queryParams]="{age: '4'}"
+								[queryParamsHandling]="'merge'">Trên 4 tuổi</a>
+						</li>
 					</ul>
 				</div>
 				<!-- /aside widget -->
