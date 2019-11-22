@@ -22,8 +22,6 @@ export class TopNavComponent implements OnInit {
               private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.getGiftsShirt();
-    this.getGiftsTrousers();
     this.category$ = this.categoryService.getAll().pipe(map(x => x.data));
   }
   showSideBar() {

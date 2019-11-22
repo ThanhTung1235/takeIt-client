@@ -49,8 +49,9 @@ export class ProductListComponent implements OnInit {
         let district = x['district'];
         let gender = x['gender'];
         let age = x['age'];
-        console.log(city + " - " + district + " - gender: " + gender + " - age:" + age);
-        this.gift$ = this.giftService.search(city, district, gender, age).pipe(
+        let cate = x['cate'];
+        // console.log(city + " - " + district + " - gender: " + gender + " - age:" + age);
+        this.gift$ = this.giftService.search(city, district, gender, age, cate).pipe(
           map(x => {
             return x.data;
           })

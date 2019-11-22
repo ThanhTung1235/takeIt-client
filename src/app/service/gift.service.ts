@@ -14,22 +14,29 @@ export class GiftService extends BaseService {
   API_URL_STAF = environment.apiPublish + '/products';
 
 
-  search(city, district, gender: number, age: number): Observable<ApiResult<GiftResponse[]>> {
-    // filter all
-    if (city != null && district != null && gender != null && age != null) {
-      return this.httpClient.get(`${this.API_URL_PUBLIC}?city=${city}&district=${district}&gender=${gender}&age=${age}`).pipe(
-        map(x => {
-          return x as ApiResult<GiftResponse[]>;
-        })
-      );
-    } else {
-      return this.httpClient.get(`${this.API_URL_PUBLIC}`).pipe(
-        map(x => {
-          return x as ApiResult<GiftResponse[]>;
-        })
-      );
+  search(city, district, gender, age, cate): Observable<ApiResult<GiftResponse[]>> {
+    if (city === undefined) {
+      city = "";
     }
+    if (district === undefined) {
+      district = "";
+    }
+    if (gender === undefined) {
+      gender = 0;
+    }
+    if (age === undefined) {
+      age = 0;
+    }
+    if (cate === undefined) {
+      cate = "";
+    }
+    return this.httpClient.get(`${this.API_URL_PUBLIC}?city=${city}&district=${district}&gender=${gender}&age=${age}&cate=${cate}`).pipe(
+      map(x => {
+        return x as ApiResult<GiftResponse[]>;
+      })
+    )
   }
+
 
   saveGift(gift: Gift): Observable<ApiResult<Gift>> {
     return this.httpClient.post(this.API_URL_PUBLIC + '/create', gift, { headers: this.addRequestHeader }).pipe(
