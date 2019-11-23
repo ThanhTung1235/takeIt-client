@@ -78,7 +78,9 @@ export class ProductListComponent implements OnInit {
     }
 
   }
-
+  followGift(giftId){
+    alert(giftId);
+  }
   onDistrictChange(district) {
     this.router.navigate(['/products'], { queryParams: { district: district.name }, queryParamsHandling: 'merge' });
   }

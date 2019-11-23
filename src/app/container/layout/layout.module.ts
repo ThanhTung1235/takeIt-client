@@ -35,6 +35,7 @@ export const routes: Routes = [
     HeaderComponent,
     FooterComponent
   ],
-  bootstrap: [LayoutComponent]
+  bootstrap: [LayoutComponent],
+  providers: []
 })
 export class LayoutModule { }

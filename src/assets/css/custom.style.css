@@ -29,3 +29,14 @@
 .spacing-address{
   margin-top: 20px;
 }
+.sub-item{
+  cursor: pointer;
+  font-size: 10px;
+}
+.nav-action{
+  min-width: 200px;
+  width: 200px;
+}
+.nav-action>span{
+  cursor: pointer;
+}

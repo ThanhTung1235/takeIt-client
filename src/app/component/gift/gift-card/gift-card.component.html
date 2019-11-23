@@ -1,19 +1,20 @@
 <div class="row">
   <div *ngFor="let g of gifts">
     <div class="col-md-4 col-sm-6 col-xs-6">
-      <div class="product product-single">
+      <div routerLink="/product/{{g.id}}" class="product product-single">
         <div class="product-thumb">
           <img [src]="g.thumbnail" alt="">
         </div>
         <div class="product-body">
           <h2 class="product-name"><a routerLink="/product/{{g.id}}">{{g.name}}</a></h2>
-          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{g.description}}</p>
-          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{g.cityName}}</p>
+
+          <p
+            style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; color: rgba(0,0,0,.6);font-size: 12px;">
+            {{g.cityName}},{{g.districtName}}</p>
           <div class="product-btns">
-            <button class="primary-btn add-to-cart">Quan Tâm</button></div>
+            <button class="primary-btn add-to-cart" (click)="subcribe(g.id)">Quan Tâm</button></div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
