@@ -20,10 +20,10 @@ export class ProductListComponent implements OnInit {
   districts$: Observable<District[]>;
   pagination: Pagination;
 
-  city: City = { id: 0, name: "Thành Phố" };
-  district: District = { id: 0, name: "Quận huyện", cityName: "" };
-  category = new Category(0, "");
-  gift = new Gift(0, "", "", "", "");
+  city: City = { id: 0, name: 'Thành Phố' };
+  district: District = { id: 0, name: 'Quận huyện', cityName: '' };
+  category = new Category(0, '');
+  gift = new Gift(0, '', '', '', '');
 
 
   constructor(
@@ -39,17 +39,17 @@ export class ProductListComponent implements OnInit {
     this.city.id = 0;
   }
   refreshSearch() {
-    this.router.navigate(['/products'])
+    this.router.navigate(['/products']);
   }
 
   searchGift() {
     this.activeRoute.queryParams.subscribe(
       x => {
-        let city = x['city'];
-        let district = x['district'];
-        let gender = x['gender'];
-        let age = x['age'];
-        let cate = x['cate'];
+        const city = x.city;
+        const district = x.district;
+        const gender = x.gender;
+        const age = x.age;
+        const cate = x.cate;
         // console.log(city + " - " + district + " - gender: " + gender + " - age:" + age);
         this.gift$ = this.giftService.search(city, district, gender, age, cate).pipe(
           map(x => {
@@ -70,16 +70,16 @@ export class ProductListComponent implements OnInit {
   }
 
   onCityChange(city) {
-    this.router.navigate(['/products'], { queryParams: { city: city.name }, queryParamsHandling: "merge" })
+    this.router.navigate(['/products'], { queryParams: { city: city.name }, queryParamsHandling: 'merge' });
     if (city.id > 0) {
       this.districts$ = this.addressService.getDistricts(city.id).pipe(
-        map(x => { return x.data })
-      )
+        map(x => x.data)
+      );
     }
 
   }
 
   onDistrictChange(district) {
-    this.router.navigate(['/products'], { queryParams: { district: district.name }, queryParamsHandling: "merge" })
+    this.router.navigate(['/products'], { queryParams: { district: district.name }, queryParamsHandling: 'merge' });
   }
 }
