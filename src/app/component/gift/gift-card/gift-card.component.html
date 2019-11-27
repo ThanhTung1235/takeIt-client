@@ -3,7 +3,7 @@
     <div class="col-md-4 col-sm-6 col-xs-6">
       <div routerLink="/product/{{g.id}}" class="product product-single">
         <div class="product-thumb">
-          <img [src]="g.thumbnail" alt="">
+          <img [src]="g.thumbnail[0]" alt="">
         </div>
         <div class="product-body">
           <h2 class="product-name"><a routerLink="/product/{{g.id}}">{{g.name}}</a></h2>

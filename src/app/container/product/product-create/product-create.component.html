@@ -1,4 +1,99 @@
-<form method="post" enctype="multipart/form-data">
-    <input type="file" ng2FileSelect [uploader]="uploader" />
-    <button [disabled]="loading" (click)="upload()" class="btn">Upload</button>
-</form>
+<app-top-nav></app-top-nav>
+<div class="container">
+    <div class="gift-register" style="display: flex;justify-content: center;">
+        <div class="col-md-10 col-sm-12 col">
+            <h2 style="margin-top: 30px;" class="text-uppercase">Đăng sản phẩm</h2>
+            <form class="review-form" #giftform="ngForm" (ngSubmit)="submit()">
+                <div class="form-group">
+                    <input class="input" type="text" required placeholder="Tên sản phẩm" [(ngModel)]="gift.name"
+                        #name="ngModel" class="input" type="text" name="giftname">
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+                        Không được bỏ trống trường này
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="input" type="text" required placeholder="Mô tả sản phẩm"
+                        [(ngModel)]="gift.description" #description="ngModel" name="description">
+                    <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger">
+                        Không được bỏ trống trường này
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="input" type="text" required placeholder="Địa chỉ (tên phố)"
+                        [(ngModel)]="gift.street_name" #street_name="ngModel" name="streetName">
+                    <div *ngIf="street_name.invalid && (street_name.dirty || street_name.touched)" class="text-danger">
+                        Không được bỏ trống trường này
+                    </div>
+                </div>
+                <div class="form-group address-form">
+                    <select class="input search-categories" [(ngModel)]='city' (ngModelChange)="onCityChange($event)"
+                        name="city">
+                        <option [value]="city">Tỉnh thành phố</option>
+                        <option *ngFor="let c of cities$ | async" [ngValue]="c">{{c.name}}
+                        </option>
+                    </select>
+                    <select class="input search-categories" [(ngModel)]='district'
+                        (ngModelChange)="onDistrictChange($event)" name="districts">
+                        <option [value]="district">Quận huyện</option>
+                        <option *ngFor="let c of districts$ | async" [ngValue]="c">{{c.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div id="direct_upload" ng2FileDrop [uploader]="uploader" (fileOver)="fileOverBase($event)"
+                        [ngClass]="{'nv-file-over': hasBaseDropZoneOver}">
+                        <form *ngIf="responses.length < 3">
+                            <div class="form_line">
+                                <div class="form_controls">
+                                    <div class="upload_button_holder">
+                                        <label class="upload_button upload-drop-zone" for="fileupload">Chọn ảnh <i
+                                                class="fas fa-camera"></i></label>
+                                        <!-- onChange hanlder resets the input value to get the change event when uploading the same file consecutively -->
+                                        <input type="file" id="fileupload" #fileInput ng2FileSelect
+                                            [style.display]="'none'" [uploader]="uploader" (change)="fileInput.value=''"
+                                            multiple />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="image-upload">
+                            <div class="file" *ngFor="let r of responses; let i = index">
+                                <button class="delete-image" (click)="deleteImage(r.data, i)">Delete image</button>
+                                <img class="img-fuild" [src]="r.data.url" alt="">
+                                <div class="progress" *ngIf="r.progress != 100">
+                                    <div class="progress-bar" role="progressbar" [style.width]="r.progress+'%'"
+                                        [attr.aria-valuenow]="r.progress" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex">
+                    <div class="col-md-4 col-lg-4 col-sm-4 form-group">
+                        <select (change)="onGenderChange($event.target.value)" class="input" name="gender">
+                            <option value="0">Giới tính</option>
+                            <option value="1">Trai</option>
+                            <option value="2">Gái</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-sm-4 form-group">
+                        <select (change)="onAgeChange($event.target.value)" class="input" name="age">
+                            <option value="0">Độ tuổi</option>
+                            <option value="1">0 ĐỂN 6 THÁNG</option>
+                            <option value="2">6 ĐỂN 12 THÁNG</option>
+                            <option value="2">1 ĐỂN 3 TUỔI</option>
+                            <option value="2">TỪ 4 ĐẾN 6 TUỔI</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-sm-4 form-group">
+                        <select  [(ngModel)]='category' (ngModelChange)="onCateChange($event)" class="input" name="cate">
+                            <option [value]="category">Danh mục</option>
+                            <option *ngFor="let c of categories$ | async" [ngValue]="c">{{c.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" [disabled]="!giftform.form.valid" class="btn btn-primary">Thêm sản phẩm</button>
+            </form>
+        </div>
+    </div>
+
+</div>

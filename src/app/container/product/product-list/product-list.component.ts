@@ -8,6 +8,7 @@ import { ActivatedRoute, RouterEvent, RouterLinkActive, Router } from '@angular/
 import { AddressService } from 'src/app/service/address.service';
 import { City, District } from 'src/app/model/address';
 import { Category } from 'src/app/model/category';
+import { Account } from 'src/app/model/account';
 
 @Component({
   selector: 'app-product-list',
@@ -20,10 +21,11 @@ export class ProductListComponent implements OnInit {
   districts$: Observable<District[]>;
   pagination: Pagination;
 
-  city: City = { id: 0, name: "Thành Phố" };
-  district: District = { id: 0, name: "Quận huyện", cityName: "" };
+  city = new City(0, "");
+  district = new District(0, "", "");
+  account = new Account(0, "", "", "");
   category = new Category(0, "");
-  gift = new Gift(0, "", "", "", "");
+  gift = new Gift(0, "", "", "", 0, 0, "", this.city, this.district, this.account, this.category);
 
 
   constructor(
@@ -76,9 +78,8 @@ export class ProductListComponent implements OnInit {
         map(x => { return x.data })
       )
     }
-
   }
-  followGift(giftId){
+  followGift(giftId) {
     alert(giftId);
   }
   onDistrictChange(district) {

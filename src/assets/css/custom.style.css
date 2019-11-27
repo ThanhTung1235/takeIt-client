@@ -5,38 +5,104 @@
   -moz-filter: blur(4px);
   filter: blur(4px);
 }
-.tab{
+
+.tab {
   display: none;
 }
-.tab-active{
+
+.tab-active {
   display: block;
 }
-.bg-white{
+
+.bg-white {
   background: white;
   min-width: 200px;
   max-width: 200px;
 }
-.nav-item-action{
+
+.nav-item-action {
   display: block;
   padding: 10px 0px;
   text-transform: uppercase;
   cursor: pointer;
 }
-.icon-action{
+
+.icon-action {
   margin-right: 15px;
   color: #F8694A;
 }
-.spacing-address{
+
+.spacing-address {
   margin-top: 20px;
 }
-.sub-item{
+
+.sub-item {
   cursor: pointer;
   font-size: 10px;
 }
-.nav-action{
+
+.nav-action {
   min-width: 200px;
   width: 200px;
 }
-.nav-action>span{
+
+.nav-action>span {
   cursor: pointer;
+}
+
+.upload-drop-zone {
+  color: #ccc;
+  border-style: dashed;
+  border-color: #ccc;
+  line-height: 200px;
+  text-align: center;
+  height: 200px;
+  border-width: 2px;
+  margin-bottom: 20px;
+  min-width: 75rem;
+}
+
+.address-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.address-form>select {
+  min-width: 100px;
+  max-width: 450px;
+  width: 100%;
+}
+
+.image-upload {
+  width: 250px;
+}
+
+.img-fuild {
+  width: 100%;
+}
+
+.gift-register {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.message{
+  height: 250px;
+}
+@media only screen and (max-width:576px) {
+  .upload-drop-zone {
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .upload-drop-zone {
+    width: 50rem;
+  }
+}
+
+@media only screen and (max-width:992px) {
+  .upload-drop-zone {
+    width: 75rem;
+  }
 }

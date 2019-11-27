@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
+import { ExchangeFormComponent } from './gift/exchange-form/exchange-form.component';
 
 
 
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     SlideComponent,
     ProfileComponent,
     LoginComponent,
+    ExchangeFormComponent,
     RegisterComponent
   ],
   imports: [
@@ -31,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     SlideComponent,
     ProfileComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ExchangeFormComponent
   ],
   providers: [Location]
 })
