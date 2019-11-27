@@ -1,3 +1,5 @@
+import {GiftResponse} from './gift';
+
 export class ApiResultBase {
     status: number;
     message: string;
@@ -5,7 +7,7 @@ export class ApiResultBase {
 }
 
 export class ApiResult<T> extends ApiResultBase {
-    data: T
+  data: T;
 }
 export class Pagination {
     page: number;
