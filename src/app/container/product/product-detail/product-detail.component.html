@@ -1,5 +1,4 @@
 <app-top-nav></app-top-nav>
-
 <div class="section">
   <!-- container -->
   <div class="container">
@@ -8,7 +7,7 @@
       <!--  Product Details -->
       <div class="product product-details clearfix">
         <div class="col-md-9">
-          <app-slide></app-slide>
+          <app-slide [state]="state" [thumbnails]="gift?.thumbnail"></app-slide>
         </div>
         <div class="col-md-3">
           <div class="product-body">
@@ -17,10 +16,18 @@
             </div>
             <p>{{gift?.description}}</p>
             <div class="product-btns">
-              <button class="primary-btn add-to-cart">Nhận ngay</button>
+              <button class="primary-btn add-to-cart" data-toggle="modal" data-target="#exampleModal"
+                data-whatever="@fat">Nhận ngay</button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <exchange-form (submitExchange)="submitExchange($event)"></exchange-form>
+                  </div>
+                </div>
+              </div>
               <div class="pull-right">
-                <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
                 <button class="main-btn icon-btn"><i class="fa fa-share-alt"></i></button>
               </div>
             </div>

@@ -18,12 +18,13 @@ export class HomeComponent implements OnInit {
   giftsTrousers$: Observable<GiftResponse[]>;
   pagination: Pagination;
   category$: Observable<Category[]>;
-
+  state: string;
   constructor(private giftService: GiftService,
               private categoryService: CategoryService) {
   }
 
   ngOnInit() {
+    this.state = "home"
     this.getGiftsShirt();
     this.getGiftsTrousers();
     this.category$ = this.categoryService.getAll().pipe(map(x => x.data));

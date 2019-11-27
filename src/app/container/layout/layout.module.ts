@@ -6,6 +6,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeModule } from '../home/home.module';
 import {SharedModule} from '../../component/shared.module';
+import { FileSelectDirective, FileUploader, FileUploadModule } from 'ng2-file-upload';
+import { FormsModule } from '@angular/forms';
 export const routes: Routes = [
   {
     path: '', component: LayoutComponent,
@@ -23,7 +25,9 @@ export const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
+    FileUploadModule,
+    FormsModule
   ],
   declarations: [
     LayoutComponent,

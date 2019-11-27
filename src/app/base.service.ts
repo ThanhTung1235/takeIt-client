@@ -11,7 +11,8 @@ export class BaseService {
     return this.requestHeader();
   }
   private requestHeader() {
-    let storage = localStorage.getItem("token");
+    let storage = localStorage.getItem("_apikey");
+    console.log(storage)
     let token = ' ';
     if (!storage) {
       return null;

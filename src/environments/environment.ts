@@ -8,6 +8,10 @@ export const environment = {
   apiPublish: 'http://localhost:8080/api',
   apiAuth: 'http://localhost:8080/account'
 };
+export const cloudConfig = {
+  cloud_name: 'simpleTake',
+  upload_preset: 'rfsi4sjd'
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

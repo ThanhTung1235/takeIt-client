@@ -5,13 +5,14 @@ import { ApiResult } from '../model/api-results';
 import { GiftResponse, Gift } from '../model/gift';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
+import { ExchangeRequest } from '../model/exchange-request';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GiftService extends BaseService {
   API_URL_PUBLIC = environment.apiPublish + '/products';
-  API_URL_STAF = environment.apiPublish + '/products';
+  API_URL_STAF = environment.apiHost + '/products';
 
 
   search(city, district, gender, age, cate): Observable<ApiResult<GiftResponse[]>> {
@@ -37,9 +38,8 @@ export class GiftService extends BaseService {
     )
   }
 
-
   saveGift(gift: Gift): Observable<ApiResult<Gift>> {
-    return this.httpClient.post(this.API_URL_PUBLIC + '/create', gift, { headers: this.addRequestHeader }).pipe(
+    return this.httpClient.post(this.API_URL_STAF + '/create', gift, { headers: this.addRequestHeader }).pipe(
       map(response => {
         return response as ApiResult<Gift>;
       })
@@ -52,6 +52,13 @@ export class GiftService extends BaseService {
         return response as ApiResult<GiftResponse>;
       })
     );
+  }
+  sendExchageRequest(exchangeRequest: ExchangeRequest): Observable<ApiResult<ExchangeRequest>> {
+    return this.httpClient.post(environment.apiHost + "/exchanges", exchangeRequest, { headers: this.addRequestHeader }).pipe(
+      map(response => {
+        return response as ApiResult<ExchangeRequest>;
+      })
+    )
   }
 
 }

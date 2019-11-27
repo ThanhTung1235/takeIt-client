@@ -9,7 +9,7 @@ import { AccountService } from '../../service/account.service';
 })
 export class LoginComponent implements OnInit {
 
-  account = new Account('', '', '');
+  account = new Account(0, '', '', '');
   confirmPass: boolean;
 
   constructor(

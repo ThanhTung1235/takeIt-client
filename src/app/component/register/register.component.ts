@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Account} from '../../model/account';
-import {AccountService} from '../../service/account.service';
-import {map} from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { Account } from '../../model/account';
+import { AccountService } from '../../service/account.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +9,7 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  account = new Account('', '', '');
+  account = new Account(0, "", "", "");
   confirmPass: boolean;
 
   constructor(private accountService: AccountService) {

@@ -5,7 +5,7 @@ import { Routes, Router, RouterModule } from '@angular/router';
 import { TopNavComponent } from '../../../component/top-nav/top-nav.component';
 import { GiftService } from 'src/app/service/gift.service';
 import { GiftCardComponent } from 'src/app/component/gift/gift-card/gift-card.component';
-import {SharedModule} from '../../../component/shared.module';
+import { SharedModule } from '../../../component/shared.module';
 import { FormsModule } from '@angular/forms';
 
 export const routes: Routes = [
@@ -28,7 +28,8 @@ export const routes: Routes = [
   ],
   providers: [
     GiftService
-  ]
+  ],
+  exports: [ProductListComponent]
 })
 
 export class ProductListModule { }

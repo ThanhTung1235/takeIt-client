@@ -16,16 +16,16 @@
 					<h3 class="aside-title">Địa chỉ</h3>
 					<ul class="list-links">
 						<li>
-							<select class="input" [(ngModel)]='city' (ngModelChange)="onCityChange($event)">
-								<option [value]="city">{{city.name}}</option>
+							<select class="input" [(ngModel)]='city' (ngModelChange)="onCityChange($event)" name="city">
+								<option [value]="city">Tỉnh thành phố</option>
 								<option *ngFor="let c of cities$ | async" [ngValue]="c">{{c.name}}
 								</option>
 							</select>
 						</li>
 						<li>
 							<select class="input spacing-address" [(ngModel)]="district"
-								(ngModelChange)="onDistrictChange($event)">
-								<option [value]="district">{{district.name}}</option>
+								(ngModelChange)="onDistrictChange($event)" name="district">
+								<option [value]="district">Quận huyện</option>
 								<option *ngFor="let c of districts$ | async" [ngValue]="c">{{c.name}}</option>
 							</select>
 						</li>
@@ -41,6 +41,8 @@
 								[queryParamsHandling]="'merge'">Nam</a></li>
 						<li><a [routerLink]="['/products']" [queryParams]="{gender: '2'}"
 								[queryParamsHandling]="'merge'">Nữ</a></li>
+						<li><a [routerLink]="['/products']" [queryParams]="{gender: '0'}"
+								[queryParamsHandling]="'merge'">Khác</a></li>
 					</ul>
 				</div>
 				<!-- /aside widget -->
@@ -63,7 +65,7 @@
 						</li>
 						<li>
 							<a [routerLink]="['/products']" [queryParams]="{age: '4'}"
-								[queryParamsHandling]="'merge'">Trên 4 tuổi</a>
+								[queryParamsHandling]="'merge'">Từ 4 đến 6 tuổi</a>
 						</li>
 					</ul>
 				</div>

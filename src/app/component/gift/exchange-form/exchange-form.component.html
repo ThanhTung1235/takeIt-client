@@ -1,0 +1,11 @@
+<div class="modal-body">
+  <form #templateVariableName="ngForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <textarea (change)="onAddressChange($event.target.value)" class="input message" placeholder="Your review" placeholder="Lời nhắn..."></textarea>
+      <div *ngIf="showError" class="text-danger">
+        Hãy để lại lời nhắn với chủ nhân của món đồ
+      </div>
+    </div>
+    <button type="submit" class="primary-btn">gửi</button>
+  </form>
+</div>
