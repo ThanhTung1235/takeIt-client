@@ -32,11 +32,23 @@ export class HomeComponent implements OnInit {
 
 
   getGiftsShirt() {
-    
+    // @ts-ignore
+    this.giftsShirt$ = this.giftService.search('', '', '', '', 'áo').pipe(
+      map(x => {
+        // @ts-ignore
+        return x.data;
+      })
+    );
   }
 
   getGiftsTrousers() {
-
+    // @ts-ignore
+    this.giftsTrousers$ = this.giftService.search('', '', '', '', 'quần').pipe(
+      map(x => {
+        // @ts-ignore
+        return x.data;
+      })
+    );
   }
 
 }

@@ -31,7 +31,6 @@
               </div>
               <strong class="text-uppercase">Tài khoản <i class="fa fa-caret-down"></i></strong>
             </div>
-
             <ng-template [ngIf]="!isLogin">
               <div class="nav-action">
                 <span class="nav-item-action sub-item" data-toggle="modal" data-target="#exampleModalCenter"
@@ -41,7 +40,6 @@
                   [routerLink]="['/home']" [queryParams]="{action: 'register'}" class="">Đăng ký</span>
               </div>
             </ng-template>
-
             <ul class="custom-menu">
               <ng-template [ngIf]="isLogin">
                 <li>
