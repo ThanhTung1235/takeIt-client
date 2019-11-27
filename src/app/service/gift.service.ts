@@ -5,7 +5,7 @@ import { ApiResult } from '../model/api-results';
 import { GiftResponse, Gift } from '../model/gift';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
-import { ExchangeRequest } from '../model/exchange-request';
+import { ExchangeRequest, ExchangeRequestResp } from '../model/exchange-request';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +53,7 @@ export class GiftService extends BaseService {
       })
     );
   }
+
   sendExchageRequest(exchangeRequest: ExchangeRequest): Observable<ApiResult<ExchangeRequest>> {
     return this.httpClient.post(environment.apiHost + "/exchanges", exchangeRequest, { headers: this.addRequestHeader }).pipe(
       map(response => {
@@ -60,5 +61,11 @@ export class GiftService extends BaseService {
       })
     )
   }
-
+  getRequestOfGift(giftId: number): Observable<ApiResult<ExchangeRequestResp[]>> {
+    return this.httpClient.get(environment.apiHost + `/exchanges/gift/${giftId}`, { headers: this.addRequestHeader }).pipe(
+      map(response => {
+        return response as ApiResult<ExchangeRequestResp[]>;
+      })
+    )
+  }
 }

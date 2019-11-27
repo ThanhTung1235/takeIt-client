@@ -23,7 +23,7 @@
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
-                      <exchange-form (submitExchange)="submitExchange($event)"></exchange-form>
+                    <exchange-form (submitExchange)="submitExchange($event)"></exchange-form>
                   </div>
                 </div>
               </div>
@@ -36,15 +36,38 @@
         <div class="col-md-12">
           <div class="product-tab">
             <ul class="tab-nav">
-              <li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li>
-              <li><a data-toggle="tab" href="#tab1">Chi tiết</a></li>
-              <li><a data-toggle="tab" href="#tab2">Đánh giá (3)</a></li>
+              <li *ngIf="!showRequest" [ngClass]="showRequest ? '': 'active'"><a data-toggle="tab" href="#tab1">Chi
+                  tiết</a></li>
+              <li><a [ngClass]="showRequest ? 'active': ''" data-toggle="tab" href="#tab2">Đánh giá (3)</a></li>
             </ul>
             <div class="tab-content">
-              <div id="tab1" class="tab-pane fade in active">
-                <p>Sản phẩm mềm , mịn, thoáng mát. </p>
+              <div *ngIf="!showRequest" [ngClass]="showRequest ? '': 'active'" id="tab1"
+                class="tab-pane fade in table-reponsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Tên người nhận</th>
+                      <th scope="col">Lời nhắn</th>
+                      <th scope="col">Tên món đồ</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let e of exchangeResp">
+                      <th scope="row">{{e.id}}</th>
+                      <td class="min-width-table">{{e.accountName}}</td>
+                      <td class="min-width-table">{{e.message}}</td>
+                      <td class="min-width-table">{{e.giftName}}</td>
+                      <td class="min-width-table">
+                        <button class="btn btn-success mr">Chấp nhận</button>
+                        <button class="btn btn-danger">không chấp nhận</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <div id="tab2" class="tab-pane fade in">
+              <div id="tab2" [ngClass]="showRequest ? 'active': ''" class="tab-pane fade in">
 
                 <div class="row">
                   <div class="col-md-6">
@@ -149,9 +172,6 @@
                     </form>
                   </div>
                 </div>
-
-
-
               </div>
             </div>
           </div>
