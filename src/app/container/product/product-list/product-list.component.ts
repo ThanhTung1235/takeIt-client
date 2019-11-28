@@ -9,6 +9,9 @@ import { AddressService } from 'src/app/service/address.service';
 import { City, District } from 'src/app/model/address';
 import { Category } from 'src/app/model/category';
 import { Account } from 'src/app/model/account';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ExchangeFormComponent } from 'src/app/component/gift/exchange-form/exchange-form.component';
+import { ExchangeRequest } from 'src/app/model/exchange-request';
 
 @Component({
   selector: 'app-product-list',
@@ -25,13 +28,15 @@ export class ProductListComponent implements OnInit {
   account = new Account(0, "", "", "");
   category = new Category(0, "");
   gift = new Gift(0, "", "", "", 0, 0, "", this.city, this.district, this.account, this.category);
+  exchange = new ExchangeRequest("", this.gift);
 
 
   constructor(
     private giftService: GiftService,
     private activeRoute: ActivatedRoute,
     private router: Router,
-    private addressService: AddressService) {
+    private addressService: AddressService,
+    private modalService: NgbModal) {
   }
 
   ngOnInit() {
@@ -78,9 +83,6 @@ export class ProductListComponent implements OnInit {
         map(x => x.data)
       );
     }
-  }
-  followGift(giftId) {
-    alert(giftId);
   }
   onDistrictChange(district) {
     this.router.navigate(['/products'], { queryParams: { district: district.name }, queryParamsHandling: 'merge' });

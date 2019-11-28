@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
     "@cloudinary/angular-5.x": "^1.0.3",
+    "@ng-bootstrap/ng-bootstrap": "^5.1.4",
     "cloudinary-core": "^2.7.4",
     "css-raw-loader": "^0.1.2",
     "firebase": "^7.3.0",

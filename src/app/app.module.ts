@@ -8,11 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './component/shared.module';
 import { FormsModule } from '@angular/forms';
 import { FileSelectDirective, FileUploader, FileUploadModule } from 'ng2-file-upload';
-import { CloudinaryModule ,CloudinaryConfiguration} from '@cloudinary/angular-5.x';
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
+
 import { ToastrModule } from 'ngx-toastr';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,8 +30,9 @@ import { ToastrModule } from 'ngx-toastr';
       timeOut: 10000,
       positionClass: 'toast-top-right',
       preventDuplicates: false,
-   }),
-    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'thanhtung' } as CloudinaryConfiguration)
+    }),
+    NgbModule,
+    CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'thanhtung' } as CloudinaryConfiguration)
   ],
   providers: [],
   exports: [

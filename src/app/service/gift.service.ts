@@ -5,7 +5,7 @@ import { ApiResult } from '../model/api-results';
 import { GiftResponse, Gift } from '../model/gift';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
-import { ExchangeRequest } from '../model/exchange-request';
+import { ExchangeRequest, ExchangeRequestResp } from '../model/exchange-request';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +17,10 @@ export class GiftService extends BaseService {
 
   search(city, district, gender, age, cate, keyword): Observable<ApiResult<GiftResponse[]>> {
     if (city === undefined) {
-      city = "";
+      city = '';
     }
     if (district === undefined) {
-      district = "";
+      district = '';
     }
     if (gender === undefined) {
       gender = 0;
@@ -29,16 +29,17 @@ export class GiftService extends BaseService {
       age = 0;
     }
     if (cate === undefined) {
-      cate = "";
+      cate = '';
     }
     if (keyword === undefined) {
-      keyword = "";
+      keyword = '';
     }
+    // tslint:disable-next-line:max-line-length
     return this.httpClient.get(`${this.API_URL_PUBLIC}?city=${city}&district=${district}&gender=${gender}&age=${age}&cate=${cate}&keyword=${keyword}`).pipe(
       map(x => {
         return x as ApiResult<GiftResponse[]>;
       })
-    )
+    );
   }
 
   saveGift(gift: Gift): Observable<ApiResult<Gift>> {
@@ -56,12 +57,19 @@ export class GiftService extends BaseService {
       })
     );
   }
+
   sendExchageRequest(exchangeRequest: ExchangeRequest): Observable<ApiResult<ExchangeRequest>> {
-    return this.httpClient.post(environment.apiHost + "/exchanges", exchangeRequest, { headers: this.addRequestHeader }).pipe(
+    return this.httpClient.post(environment.apiHost + '/exchanges', exchangeRequest, { headers: this.addRequestHeader }).pipe(
       map(response => {
         return response as ApiResult<ExchangeRequest>;
       })
-    )
+    );
   }
-
+  getRequestOfGift(giftId: number): Observable<ApiResult<ExchangeRequestResp[]>> {
+    return this.httpClient.get(environment.apiHost + `/exchanges/gift/${giftId}`, { headers: this.addRequestHeader }).pipe(
+      map(response => {
+        return response as ApiResult<ExchangeRequestResp[]>;
+      })
+    );
+  }
 }

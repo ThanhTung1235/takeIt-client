@@ -89,15 +89,27 @@
 .message{
   height: 250px;
 }
+.mr{
+  margin-right: 10px;
+}
+.table-reponsive{
+  overflow: auto;
+}
 @media only screen and (max-width:576px) {
   .upload-drop-zone {
     width: 40rem;
+  }
+  .min-width-table{
+    min-width: 250px;
   }
 }
 
 @media only screen and (max-width:768px) {
   .upload-drop-zone {
     width: 50rem;
+  }
+  .min-width-table{
+    min-width: 300px;
   }
 }
 
