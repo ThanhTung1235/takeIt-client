@@ -58,7 +58,13 @@ export class ProductListComponent implements OnInit {
         const gender = x.gender;
         const age = x.age;
         const cate = x.cate;
+<<<<<<< HEAD
         this.gift$ = this.giftService.search(city, district, gender, age, cate, '', '').pipe(
+=======
+        const keyword = x.keyword;
+        // console.log(city + " - " + district + " - gender: " + gender + " - age:" + age);
+        this.gift$ = this.giftService.search(city, district, gender, age, cate, keyword).pipe(
+>>>>>>> c614d2ce3ac68dee9068a237c5ead569cd98b1e2
           map(x => {
             this.pagination = x.pagination;
             return x.data;

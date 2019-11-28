@@ -9,6 +9,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { withIdentifier } from 'codelyzer/util/astQuery';
 import { AccountService } from 'src/app/service/account.service';
 import { Account } from 'src/app/model/account';
+import { GiftService } from 'src/app/service/gift.service';
 
 @Component({
   selector: 'app-header',
@@ -24,17 +25,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
   sub: Subscription;
   account: Account;
 
+  keyword: string;
+
   constructor(
     private categoryService: CategoryService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private accountSerivce: AccountService
+    private accountSerivce: AccountService,
+    private giftService: GiftService
   ) {
     this.getAccount();
   }
 
   ngOnInit() {
-    let apiKey = localStorage.getItem("_apikey");
+    const apiKey = localStorage.getItem('_apikey');
     if (apiKey != null) {
       this.isLogin = true;
     } else {
@@ -43,7 +47,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.sub = this.activatedRoute.queryParams.subscribe(
       x => {
-        let params = x['action'];
+        const params = x.action;
         if (params === 'login') {
           this.showLoginForm = true;
           this.showRegisterForm = false;
@@ -82,8 +86,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       map(x => x.data)
     );
   }
+
   logout() {
-    localStorage.removeItem("_apikey");
+    localStorage.removeItem('_apikey');
     this.isLogin = false;
   }
   getAccount() {
@@ -91,5 +96,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  onSearchChage(event) {
+    console.log(event.target.value);
+    this.keyword = event.target.value;
+  }
+  search(event){
+    this.router.navigate(['/products'], {queryParams: {keyword: this.keyword}});
   }
 }

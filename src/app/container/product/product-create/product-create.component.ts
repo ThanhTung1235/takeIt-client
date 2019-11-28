@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
+// @ts-ignore
 import { Cloudinary } from '@cloudinary/angular-5.x';
 import { cloudConfig } from 'src/environments/environment';
 import { Gift, ThumbnailResp, Gender } from 'src/app/model/gift';
@@ -8,6 +9,7 @@ import { City, District } from 'src/app/model/address';
 import { Account } from 'src/app/model/account';
 import { Category } from 'src/app/model/category';
 import { stringify } from 'querystring';
+// @ts-ignore
 import { ToastrService } from 'ngx-toastr';
 import { GiftService } from 'src/app/service/gift.service';
 import { AddressService } from 'src/app/service/address.service';
@@ -26,15 +28,15 @@ export class ProductCreateComponent implements OnInit {
   @Input()
   responses: Array<any>;
 
-  private hasBaseDropZoneOver: boolean = false;
+  private hasBaseDropZoneOver = false;
   private uploader: FileUploader;
   private title: string;
 
-  city = new City(0, "");
-  district = new District(0, "", "");
-  account = new Account(0, "", "", "");
-  category = new Category(0, "");
-  gift = new Gift(100, "", "", "", 0, 0, "", this.city, this.district, this.account, this.category);
+  city = new City(0, '');
+  district = new District(0, '', '');
+  account = new Account(0, '', '', '');
+  category = new Category(0, '');
+  gift = new Gift(100, '', '', '', 0, 0, '', this.city, this.district, this.account, this.category);
   thumbnailResp: ThumbnailResp[];
   thumbnails: any[] = [];
   thumb: string;
@@ -159,10 +161,10 @@ export class ProductCreateComponent implements OnInit {
       );
   }
 
-  deleteImage = function (data: any, index: number) {
+  deleteImage = function(data: any, index: number) {
     const url = `https://api.cloudinary.com/v1_1/${cloudConfig.cloud_name}/delete_by_token`;
     const headers = new Headers({ 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' });
-    const options = { headers: headers };
+    const options = { headers };
     const body = {
       token: data.delete_token
     };
@@ -182,7 +184,7 @@ export class ProductCreateComponent implements OnInit {
       return null;
     }
     return Object.keys(fileProperties)
-      .map((key) => ({ 'key': key, 'value': fileProperties[key] }));
+      .map((key) => ({ key, value: fileProperties[key] }));
   }
 
   getCities() {
@@ -195,10 +197,10 @@ export class ProductCreateComponent implements OnInit {
   onCityChange(city) {
     this.gift.city = city;
     if (city.id > 0) {
-      this.submitStatus = true
+      this.submitStatus = true;
       this.districts$ = this.addressService.getDistricts(city.id).pipe(
-        map(x => { return x.data })
-      )
+        map(x => x.data)
+      );
     } else {
       this.submitStatus = false;
     }
@@ -206,7 +208,7 @@ export class ProductCreateComponent implements OnInit {
   }
   onDistrictChange(district) {
     if (district.id > 0) {
-      this.submitStatus = true
+      this.submitStatus = true;
     } else {
       this.submitStatus = false;
     }
@@ -214,13 +216,13 @@ export class ProductCreateComponent implements OnInit {
   }
   onAgeChange(event) {
     if (event > 0) {
-      this.submitStatus = true
+      this.submitStatus = true;
     } else {
-      this.submitStatus = false
+      this.submitStatus = false;
     }
     this.gift.age_range = event;
   }
-  onGenderChange(event) { 
+  onGenderChange(event) {
     console.log(event);
     // if (event > 0) {
     //   this.submitStatus = true
@@ -230,7 +232,7 @@ export class ProductCreateComponent implements OnInit {
     // this.gift.category = event
   }
 
-  onCateChange(event){
+  onCateChange(event) {
     this.gift.category = event;
     console.log(event);
   }
@@ -256,29 +258,29 @@ export class ProductCreateComponent implements OnInit {
     thumb1 = this.thumbnails[0];
     thumb2 = this.thumbnails[1];
     thumb3 = this.thumbnails[2];
-    this.thumb = thumb1.concat(",", thumb2, ",", thumb3);
+    this.thumb = thumb1.concat(',', thumb2, ',', thumb3);
     this.gift.thumbnail = this.thumb;
 
     if (this.submitStatus) {
       this.giftService.saveGift(this.gift).subscribe(x => {
         if (x.status === 201) {
-          this.router.navigate(['/products'])
+          this.router.navigate(['/products']);
           this.toastService.success('Sản phẩm của bạn đăng thành công và đang chờ để được duyệt', '', {
             positionClass: 'toast-top-full-width',
             timeOut: 3000
-          })
+          });
         } else {
           this.toastService.error('Lỗi hệ thống', '', {
             positionClass: 'toast-top-full-width',
             timeOut: 3000
-          })
+          });
         }
-      })
+      });
     } else {
       this.toastService.error('Hãy xem lại các trường nhập ở trên', '', {
         positionClass: 'toast-top-full-width',
         timeOut: 3000
-      })
+      });
     }
 
   }

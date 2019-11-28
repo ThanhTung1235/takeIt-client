@@ -28,10 +28,11 @@
         <div class="footer">
           <h3 class="footer-header">Thông Tin</h3>
           <ul class="list-links">
-            <li><a href="#">Đăng nhập</a></li>
-            <li><a href="#">Đăng kí</a></li>
-            <li><a href="#">Đăng xuất</a></li>
-
+            <li><div class="nav-item-action" data-toggle="modal" data-target="#exampleModalCenter"
+                     [routerLink]="['/home']" [queryParams]="{action: 'login'}">
+              <i class=""></i> Đăng nhập
+            </div></li>
+            <li><a [routerLink]="['/home']" [queryParams]="{action: 'register'}">Đăng ký</a></li>
           </ul>
         </div>
       </div>
