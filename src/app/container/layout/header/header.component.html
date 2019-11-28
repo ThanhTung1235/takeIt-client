@@ -1,4 +1,5 @@
 <!-- HEADER -->
+<!-- {{account?.username | json}} -->
 <header>
   <!-- header -->
   <div id="header">
@@ -30,6 +31,10 @@
                 <i class="fa fa-user-o"></i>
               </div>
               <strong class="text-uppercase">Tài khoản <i class="fa fa-caret-down"></i></strong>
+              <div>
+                <a href="#" class="text-uppercase">{{account?.username}}</a>
+              </div>
+              
             </div>
             <ng-template [ngIf]="!isLogin">
               <div class="nav-action">

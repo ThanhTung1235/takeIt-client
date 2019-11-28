@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { ExchangeFormComponent } from './gift/exchange-form/exchange-form.component';
+import { TransactionComponent } from './account/transaction/transaction.component';
+import { RequestComponent } from './account/request/request.component';
 
 
 
@@ -18,7 +20,9 @@ import { ExchangeFormComponent } from './gift/exchange-form/exchange-form.compon
     SlideComponent,
     LoginComponent,
     ExchangeFormComponent,
-    RegisterComponent
+    RegisterComponent,
+    TransactionComponent,
+    RequestComponent
   ],
   imports: [
     CommonModule,
@@ -30,8 +34,10 @@ import { ExchangeFormComponent } from './gift/exchange-form/exchange-form.compon
     TopNavComponent,
     SlideComponent,
     LoginComponent,
+    ExchangeFormComponent,
     RegisterComponent,
-    ExchangeFormComponent
+    TransactionComponent,
+    RequestComponent
   ],
   providers: [Location]
 })

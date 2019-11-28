@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {GiftResponse} from '../../model/gift';
-import {Pagination} from '../../model/api-results';
-import {GiftService} from '../../service/gift.service';
-import {map} from 'rxjs/operators';
-import {Category} from '../../model/category';
-import {CategoryService} from '../../service/category.service';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { GiftResponse } from '../../model/gift';
+import { Pagination } from '../../model/api-results';
+import { GiftService } from '../../service/gift.service';
+import { map } from 'rxjs/operators';
+import { Category } from '../../model/category';
+import { CategoryService } from '../../service/category.service';
 
 @Component({
   selector: 'app-home',
@@ -16,11 +16,12 @@ export class HomeComponent implements OnInit {
 
   giftsShirt$: Observable<GiftResponse[]>;
   giftsTrousers$: Observable<GiftResponse[]>;
+  gifts$: Observable<GiftResponse[]>;
   pagination: Pagination;
   category$: Observable<Category[]>;
   state: string;
   constructor(private giftService: GiftService,
-              private categoryService: CategoryService) {
+    private categoryService: CategoryService) {
   }
 
   ngOnInit() {
@@ -28,24 +29,28 @@ export class HomeComponent implements OnInit {
     this.getGiftsShirt();
     this.getGiftsTrousers();
     this.category$ = this.categoryService.getAll().pipe(map(x => x.data));
+    this.getGifts();
   }
 
+  getGifts() {
+    this.gifts$ = this.giftService.search('', '', '', '', '', '', '').pipe(
+      map(x => {
+        return x.data;
+      })
+    );
+  }
 
   getGiftsShirt() {
-    // @ts-ignore
-    this.giftsShirt$ = this.giftService.search('', '', '', '', 'áo').pipe(
+    this.giftsShirt$ = this.giftService.search('', '', '', '', 'Áo','','').pipe(
       map(x => {
-        // @ts-ignore
         return x.data;
       })
     );
   }
 
   getGiftsTrousers() {
-    // @ts-ignore
-    this.giftsTrousers$ = this.giftService.search('', '', '', '', 'quần').pipe(
+    this.giftsTrousers$ = this.giftService.search('', '', '', '', 'Quần','','').pipe(
       map(x => {
-        // @ts-ignore
         return x.data;
       })
     );

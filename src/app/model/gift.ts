@@ -1,5 +1,5 @@
 import { City, District } from './address';
-import { AccountInfo, Account } from './account';
+import { Account } from './account';
 import { Category } from './category';
 
 export class GiftResponse {

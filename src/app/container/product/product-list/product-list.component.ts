@@ -3,7 +3,7 @@ import { GiftService } from 'src/app/service/gift.service';
 import { Gift, GiftResponse } from 'src/app/model/gift';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { Pagination } from 'src/app/model/api-results';
+import { Pagination, ApiResult } from 'src/app/model/api-results';
 import { ActivatedRoute, RouterEvent, RouterLinkActive, Router } from '@angular/router';
 import { AddressService } from 'src/app/service/address.service';
 import { City, District } from 'src/app/model/address';
@@ -19,6 +19,7 @@ import { ExchangeRequest } from 'src/app/model/exchange-request';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+  apiResult$: Observable<ApiResult<GiftResponse[]>>;
   gift$: Observable<GiftResponse[]>;
   cities$: Observable<City[]>;
   districts$: Observable<District[]>;
@@ -29,6 +30,7 @@ export class ProductListComponent implements OnInit {
   category = new Category(0, "");
   gift = new Gift(0, "", "", "", 0, 0, "", this.city, this.district, this.account, this.category);
   exchange = new ExchangeRequest("", this.gift);
+
 
 
   constructor(
@@ -56,9 +58,9 @@ export class ProductListComponent implements OnInit {
         const gender = x.gender;
         const age = x.age;
         const cate = x.cate;
-        // console.log(city + " - " + district + " - gender: " + gender + " - age:" + age);
-        this.gift$ = this.giftService.search(city, district, gender, age, cate).pipe(
+        this.gift$ = this.giftService.search(city, district, gender, age, cate, '', '').pipe(
           map(x => {
+            this.pagination = x.pagination;
             return x.data;
           })
         );
@@ -85,5 +87,25 @@ export class ProductListComponent implements OnInit {
   }
   onDistrictChange(district) {
     this.router.navigate(['/products'], { queryParams: { district: district.name }, queryParamsHandling: 'merge' });
+  }
+  pageChange(event) {
+    console.log(event);
+    let pageIndex = event;
+    this.activeRoute.queryParams.subscribe(
+      x => {
+        const city = x.city;
+        const district = x.district;
+        const gender = x.gender;
+        const age = x.age;
+        const cate = x.cate;
+        // console.log(city + " - " + district + " - gender: " + gender + " - age:" + age);
+        this.gift$ = this.giftService.search(city, district, gender, age, cate, pageIndex,'').pipe(
+          map(x => {
+            this.pagination = x.pagination;
+            return x.data;
+          })
+        );
+      }
+    );
   }
 }

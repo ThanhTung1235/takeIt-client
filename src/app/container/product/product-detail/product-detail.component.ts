@@ -104,16 +104,23 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
           }
         }
       );
-    }else{
+    } else {
       this.toastService.error('Bạn hãy đăng nhập để sử dụng tính năng này', '', {
         timeOut: 5000
       })
     }
   }
   getGiftRelatedTo() {
-    this.gifts$ = this.giftService.search("", "", "", "", this.cateName).pipe(map(x => {
+    this.gifts$ = this.giftService.search("", "", "", "", this.cateName, "", "").pipe(map(x => {
       return x.data;
     }));
+  }
+
+  confirmRequest() {
+    alert(1)
+  }
+  cancelRequest() {
+    alert(2)
   }
 
   ngOnDestroy() {

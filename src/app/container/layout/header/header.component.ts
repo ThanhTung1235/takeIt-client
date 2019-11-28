@@ -7,6 +7,8 @@ import { Category } from '../../../model/category';
 import { filter, map } from 'rxjs/operators';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { withIdentifier } from 'codelyzer/util/astQuery';
+import { AccountService } from 'src/app/service/account.service';
+import { Account } from 'src/app/model/account';
 
 @Component({
   selector: 'app-header',
@@ -20,12 +22,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   showRegisterForm: boolean;
   isLogin: boolean;
   sub: Subscription;
+  account: Account;
 
   constructor(
     private categoryService: CategoryService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private accountSerivce: AccountService
   ) {
+    this.getAccount();
   }
 
   ngOnInit() {
@@ -47,6 +52,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
     this.categoryService.getAll();
     this.detectUrl();
+
   }
 
   detectUrl() {
@@ -65,7 +71,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.showRegisterForm = true;
         }
         if (lastPath === 'logout') {
-          
+
         }
       }
     );
@@ -79,6 +85,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logout() {
     localStorage.removeItem("_apikey");
     this.isLogin = false;
+  }
+  getAccount() {
+    this.sub = this.accountSerivce.getDetail().subscribe(x => this.account = x.data);
   }
   ngOnDestroy() {
     this.sub.unsubscribe();

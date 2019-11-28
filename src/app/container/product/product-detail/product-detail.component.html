@@ -6,18 +6,33 @@
     <div class="row">
       <!--  Product Details -->
       <div class="product product-details clearfix">
-        <div class="col-md-9">
+        <div class="col-md-8">
           <app-slide [state]="state" [thumbnails]="gift?.thumbnail"></app-slide>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="product-body">
             <h2 class="product-name text-capitalize">{{gift?.name}}</h2>
             <div class="product-options">
             </div>
+            <strong>Mô tả</strong>
             <p>{{gift?.description}}</p>
+            <strong>Danh mục</strong>
+            <p>{{gift?.categoryName}}</p>
+            <strong>Địa chỉ</strong>
+            <p>{{gift?.cityName}}</p>
+            <div>
+              <img class="avatar-image" src="../../../../assets/images/avatar.png" alt="">
+              <span class="text-capitalize"><b>{{gift?.accountName}}</b></span>
+            </div>
+            <div _ngcontent-exo-c6="" class="product-options"></div>
             <div class="product-btns">
               <button class="primary-btn add-to-cart" data-toggle="modal" data-target="#exampleModal"
                 data-whatever="@fat">Nhận ngay</button>
+                <div class="pull-right">
+                  <button class="main-btn icon-btn"><i class="fa fa-share-alt"></i></button>
+                </div>
+                
+
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -26,9 +41,6 @@
                     <exchange-form (submitExchange)="submitExchange($event)"></exchange-form>
                   </div>
                 </div>
-              </div>
-              <div class="pull-right">
-                <button class="main-btn icon-btn"><i class="fa fa-share-alt"></i></button>
               </div>
             </div>
           </div>
@@ -39,7 +51,6 @@
               <li *ngIf="!showRequest" [ngClass]="showRequest ? '': 'active'">
                 <a data-toggle="tab" href="#tab1">Những người đã quan tâm</a>
                 </li>
-              <li><a [ngClass]="showRequest ? 'active': ''" data-toggle="tab" href="#tab2">Đánh giá (3)</a></li>
             </ul>
             <div class="tab-content">
               <div *ngIf="!showRequest" [ngClass]="showRequest ? '': 'active'" id="tab1"
@@ -61,118 +72,12 @@
                       <td class="min-width-table">{{e.message}}</td>
                       <td class="min-width-table">{{e.giftName}}</td>
                       <td class="min-width-table">
-                        <button class="btn btn-success mr">Chấp nhận</button>
-                        <button class="btn btn-danger">không chấp nhận</button>
+                        <button (click)="confirmRequest()" class="btn btn-success mr">Chấp nhận</button>
+                        <button (click)="cancelRequest()" class="btn btn-danger">không chấp nhận</button>
                       </td>
                     </tr>
                   </tbody>
                 </table>
-              </div>
-              <div id="tab2" [ngClass]="showRequest ? 'active': ''" class="tab-pane fade in">
-
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="product-reviews">
-                      <div class="single-review">
-                        <div class="review-heading">
-                          <div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-                          <div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
-                          <div class="review-rating pull-right">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o empty"></i>
-                          </div>
-                        </div>
-                        <div class="review-body">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                          </p>
-                        </div>
-                      </div>
-
-                      <div class="single-review">
-                        <div class="review-heading">
-                          <div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-                          <div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
-                          <div class="review-rating pull-right">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o empty"></i>
-                          </div>
-                        </div>
-                        <div class="review-body">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                          </p>
-                        </div>
-                      </div>
-
-                      <div class="single-review">
-                        <div class="review-heading">
-                          <div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-                          <div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
-                          <div class="review-rating pull-right">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o empty"></i>
-                          </div>
-                        </div>
-                        <div class="review-body">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                          </p>
-                        </div>
-                      </div>
-
-                      <ul class="reviews-pages">
-                        <li class="active">1</li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <h4 class="text-uppercase">Write Your Review</h4>
-                    <p>Your email address will not be published.</p>
-                    <form class="review-form">
-                      <div class="form-group">
-                        <input class="input" type="text" placeholder="Your Name" />
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="email" placeholder="Email Address" />
-                      </div>
-                      <div class="form-group">
-                        <textarea class="input" placeholder="Your review"></textarea>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-rating">
-                          <strong class="text-uppercase">Your Rating: </strong>
-                          <div class="stars">
-                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
-                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
-                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
-                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
-                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
-                          </div>
-                        </div>
-                      </div>
-                      <button class="primary-btn">Submit</button>
-                    </form>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

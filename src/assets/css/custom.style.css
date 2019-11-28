@@ -95,6 +95,10 @@
 .table-reponsive{
   overflow: auto;
 }
+.avatar-image{
+  width: 50px;
+  margin-right: 8px;
+}
 @media only screen and (max-width:576px) {
   .upload-drop-zone {
     width: 40rem;

@@ -11,8 +11,14 @@ export class Account {
 export class AccountInfo {
   constructor(
     public id: number,
-    public name: string,
-    public cityName: string
+    public firstName: string,
+    public lastName: string,
+    public email: string,
+    public dob: string,
+    public accountName: string,
+    public accountId: string,
+    public createdAt: string,
+    public updatedAt: string,
   ) {
   }
 }
