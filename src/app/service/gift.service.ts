@@ -15,7 +15,7 @@ export class GiftService extends BaseService {
   API_URL_STAF = environment.apiHost + '/products';
 
 
-  search(city, district, gender, age, cate): Observable<ApiResult<GiftResponse[]>> {
+  search(city, district, gender, age, cate, keyword): Observable<ApiResult<GiftResponse[]>> {
     if (city === undefined) {
       city = "";
     }
@@ -31,7 +31,10 @@ export class GiftService extends BaseService {
     if (cate === undefined) {
       cate = "";
     }
-    return this.httpClient.get(`${this.API_URL_PUBLIC}?city=${city}&district=${district}&gender=${gender}&age=${age}&cate=${cate}`).pipe(
+    if (keyword === undefined) {
+      keyword = "";
+    }
+    return this.httpClient.get(`${this.API_URL_PUBLIC}?city=${city}&district=${district}&gender=${gender}&age=${age}&cate=${cate}&keyword=${keyword}`).pipe(
       map(x => {
         return x as ApiResult<GiftResponse[]>;
       })

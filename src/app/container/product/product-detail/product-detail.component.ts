@@ -19,7 +19,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   gift: GiftResponse;
   state: string;
   sub: Subscription;
-  account = new Account(0, "", "", "");
+  account = new Account(0, '', "", "");
   city: City;
   district: District;
   cate: Category;
