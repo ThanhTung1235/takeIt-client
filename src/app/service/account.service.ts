@@ -35,7 +35,7 @@ export class AccountService extends BaseService {
     );
   }
   getInfo() : Observable<ApiResult<AccountInfo>>{
-    return this.httpClient.get(`${this.API_URL}/account-info/detail`, { headers: this.addRequestHeader }).pipe(
+    return this.httpClient.get(`http://localhost:8080/_api/account-info/detail`, { headers: this.addRequestHeader }).pipe(
       map(x => {
         return x as ApiResult<AccountInfo>;
       })

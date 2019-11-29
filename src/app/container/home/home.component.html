@@ -46,46 +46,15 @@
       <!-- section title -->
       <div class="col-md-12">
         <div class="section-title">
-          <h2 class="title">SẢN PHẨM VỪA ĐĂNG</h2>
           <div class="pull-right">
             <div class="product-slick-dots-2 custom-dots">
             </div>
           </div>
         </div>
       </div>
-      <app-gift-card [gifts]="gifts$ | async | slice:0:3"></app-gift-card>
-
+      <app-gift-card [gifts]="gifts$ | async | slice:0:6"></app-gift-card>
+      <a class="text-danger pull-right" style="margin-bottom: 30px;font-size: 16px;" routerLink="/products">Xem thêm>></a>
     </div>
-    <!-- /row -->
-    <!-- row -->
-    <div class="row">
-      <!-- section title -->
-      <div class="col-md-12">
-        <div class="section-title" style="text-align: center">
-          <h2 class="title">Những món quà vừa đăng</h2>
-        </div>
-      </div>
-      <!-- section title -->
-      <div class="col-md-12">
-        <div class="section-title">
-          <h3 class="title">Áo</h3>
-        </div>
-      </div>
-      <app-gift-card [gifts]="giftsShirt$ | async | slice:0:3"></app-gift-card>
-    </div>
-    <!-- /row -->
-    <!-- row -->
-    <div class="row">
-      <div class="col-md-12">
-        <div class="section-title">
-          <h3 class="title">Quần</h3>
-        </div>
-      </div>
-      <!-- Product Single -->
-      <app-gift-card [gifts]="giftsTrousers$ | async | slice:0:3"></app-gift-card>
-      <!-- /Product Single -->
-    </div>
-    <!-- /row -->
   </div>
   <!-- /container -->
 </div>
