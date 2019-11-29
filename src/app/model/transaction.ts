@@ -6,6 +6,7 @@ export class Transaction {
         public ownerName: string,
         public giftId: string,
         public giftName: string,
+        public thumnail: string,
         public requestId: string,
         public createdAt: string,
         public updatedAt: string,

@@ -50,21 +50,17 @@
                 </li>
               </ul>
               <div class="tab-content">
-                <div id="tab1" class="tab-pane fade in active">
-                  <b>Những người đã quan tâm</b>
-                  <app-request></app-request>
+                <div id="tab1" class="tab-pane fade in active overflow-at">
+                  <app-request (confirm)="confirm($event)" (cancel)="cancel($event)" [owner]="exchangesOwner$ | async "></app-request>
                 </div>
-                <div id="tab2" class="tab-pane fade ">
-                  Yêu cầu trao đổi
-                  <app-request></app-request>
+                <div id="tab2" class="tab-pane fade overflow-at">
+                  <app-request [receiver]="exchangesReceiver$ | async "></app-request>
                 </div>
-                <div id="tab3" class="tab-pane fade ">
-                  Nhận lại
-                  <app-transaction></app-transaction>
+                <div id="tab3" class="tab-pane fade overflow-at">
+                  <app-transaction [receiver]="transactionsReceiver$ | async "></app-transaction>
                 </div>
-                <div id="tab4" class="tab-pane fade ">
-                  Cho đi
-                  <app-transaction></app-transaction>
+                <div id="tab4" class="tab-pane fade overflow-at">
+                  <app-transaction (confirmTran)="confirmTran($event)" (cancelTran)="cancelTran($event)" [owner]="transactionsOwner$ | async "></app-transaction>
                 </div>
               </div>
             </div>

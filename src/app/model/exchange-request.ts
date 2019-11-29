@@ -11,6 +11,7 @@ export class ExchangeRequestResp {
         public id: number,
         public message: string,
         public accountName: string,
-        public giftName: string
+        public giftName: string,
+        public thumnail: string,
     ) { }
 }

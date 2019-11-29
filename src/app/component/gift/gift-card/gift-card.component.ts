@@ -8,12 +8,9 @@ import { Gift } from 'src/app/model/gift';
 })
 export class GiftCardComponent implements OnInit {
   @Input() gifts: Gift[];
-  @Output() followGift = new EventEmitter();
   constructor() { }
 
-  subcribe(giftId) {
-    this.followGift.emit(giftId);
-  }
+
   
   ngOnInit() {
   }

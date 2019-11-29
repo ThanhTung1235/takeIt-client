@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
   }
 
   getGifts() {
-    this.gifts$ = this.giftService.search('', '', '', '', '', '', '').pipe(
+    this.gifts$ = this.giftService.search('', '', '', '', '', '', '', '').pipe(
       map(x => {
         return x.data;
       })
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   getGiftsShirt() {
-    this.giftsShirt$ = this.giftService.search('', '', '', '', 'Áo','','').pipe(
+    this.giftsShirt$ = this.giftService.search('', '', '', '', 'Áo', '', '', '').pipe(
       map(x => {
         return x.data;
       })
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
   }
 
   getGiftsTrousers() {
-    this.giftsTrousers$ = this.giftService.search('', '', '', '', 'Quần','','').pipe(
+    this.giftsTrousers$ = this.giftService.search('', '', '', '', 'Quần', '', '', '').pipe(
       map(x => {
         return x.data;
       })

@@ -62,6 +62,7 @@
                       <th scope="col">Tên người nhận</th>
                       <th scope="col">Lời nhắn</th>
                       <th scope="col">Tên món đồ</th>
+                      <th scope="col">Trạng thái</th>
                       <th scope="col"></th>
                     </tr>
                   </thead>
@@ -71,9 +72,15 @@
                       <td class="min-width-table">{{e.accountName}}</td>
                       <td class="min-width-table">{{e.message}}</td>
                       <td class="min-width-table">{{e.giftName}}</td>
-                      <td class="min-width-table">
-                        <button (click)="confirmRequest()" class="btn btn-success mr">Chấp nhận</button>
-                        <button (click)="cancelRequest()" class="btn btn-danger">không chấp nhận</button>
+                      <td class="profile-td">
+                        <button class="btn"
+                          [ngClass]="{'btn-warning': e.numberOfStatus == 0, 'btn-success': e.numberOfStatus == 1,'btn-danger': e.numberOfStatus == -1}">
+                          {{e.status}}
+                        </button>
+                      </td>
+                      <td class="min-width-table" *ngIf="e.numberOfStatus == 0">
+                        <button (click)="confirmRequest(e.id)" class="btn btn-success mr">Chấp nhận</button>
+                        <button (click)="cancelRequest(e.id)" class="btn btn-danger">không chấp nhận</button>
                       </td>
                     </tr>
                   </tbody>
@@ -110,4 +117,7 @@
     <!-- /row -->
   </div>
   <!-- /container -->
+</div>
+<div *ngIf="loader" class="loader">
+  <div id="loader"></div>
 </div>

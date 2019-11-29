@@ -38,10 +38,10 @@ export class GiftService extends BaseService {
       limit = "";
     }
     if (keyword === undefined) {
-      keyword = '';
+      keyword = "";
     }
+    console.log("service:");
     return this.httpClient.get(`${this.API_URL_PUBLIC}?city=${city}&district=${district}&gender=${gender}&cate=${cate}&age=${age}&page=${page}&limit=${limit}&keyword=${keyword}`).pipe(
-
       map(x => {
         return x as ApiResult<GiftResponse[]>;
       })
@@ -75,6 +75,28 @@ export class GiftService extends BaseService {
     return this.httpClient.get(environment.apiHost + `/exchanges/gift/${giftId}`, { headers: this.addRequestHeader }).pipe(
       map(response => {
         return response as ApiResult<ExchangeRequestResp[]>;
+      })
+    );
+  }
+  getRequestOfOwner(): Observable<ApiResult<ExchangeRequestResp[]>> {
+    return this.httpClient.get(environment.apiHost + `/exchanges/owner`, { headers: this.addRequestHeader }).pipe(
+      map(response => {
+        return response as ApiResult<ExchangeRequestResp[]>;
+      })
+    );
+  }
+  getRequestOfReceiver(): Observable<ApiResult<ExchangeRequestResp[]>> {
+    return this.httpClient.get(environment.apiHost + `/exchanges/receiver`, { headers: this.addRequestHeader }).pipe(
+      map(response => {
+        return response as ApiResult<ExchangeRequestResp[]>;
+      })
+    );
+  }
+
+  confirmExchange(id,status): Observable<ApiResult<ExchangeRequestResp>> {
+    return this.httpClient.get(environment.apiHost + `/exchanges/${id}?status=${status}`, { headers: this.addRequestHeader }).pipe(
+      map(response => {
+        return response as ApiResult<ExchangeRequestResp>;
       })
     );
   }

@@ -10,7 +10,7 @@ import { ApiResult } from '../model/api-results';
   providedIn: 'root'
 })
 export class TransactionService extends BaseService {
-  API_URL = environment.apiHost;
+  API_URL = environment.apiHost + '/transactions';
 
   getTransactionReceiver(): Observable<ApiResult<Transaction[]>> {
     return this.httpClient.get(`${this.API_URL}/receiver`, { headers: this.addRequestHeader }).pipe(
@@ -25,5 +25,13 @@ export class TransactionService extends BaseService {
         return x as ApiResult<Transaction[]>
       })
     )
+  }
+  confirmTransaction(id, status): Observable<ApiResult<Transaction>> {
+    return this.httpClient.get(`${this.API_URL}/exchangeConfirm/${id}?status=${status}` ,{headers: this.addRequestHeader}).pipe(
+      map(x => {
+        return x as ApiResult<Transaction>;
+      })
+    )
+
   }
 }

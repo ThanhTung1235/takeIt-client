@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GiftService } from 'src/app/service/gift.service';
 import { Gift, GiftResponse } from 'src/app/model/gift';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Pagination, ApiResult } from 'src/app/model/api-results';
 import { ActivatedRoute, RouterEvent, RouterLinkActive, Router } from '@angular/router';
@@ -30,6 +30,8 @@ export class ProductListComponent implements OnInit {
   category = new Category(0, "");
   gift = new Gift(0, "", "", "", 0, 0, "", this.city, this.district, this.account, this.category);
   exchange = new ExchangeRequest("", this.gift);
+  sub: Subscription;
+  
 
 
 
@@ -38,13 +40,30 @@ export class ProductListComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private router: Router,
     private addressService: AddressService,
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.searchGift();
     this.getCities();
     this.city.id = 0;
+    this.sub = this.activatedRoute.queryParams.subscribe(
+      x => {
+        const keyword = x.keyword;
+        const city = x.keyword;
+        const district = x.keyword;
+        const gender = x.keyword;
+        const age = x.keyword;
+        const cate = x.keyword;
+        this.gift$ = this.giftService.search(city, district, gender, age, cate,'','',keyword).pipe(
+          map(x => {
+            this.pagination = x.pagination;
+            return x.data;
+          })
+        );
+      }
+    );
   }
   refreshSearch() {
     this.router.navigate(['/products']);
@@ -58,13 +77,10 @@ export class ProductListComponent implements OnInit {
         const gender = x.gender;
         const age = x.age;
         const cate = x.cate;
-<<<<<<< HEAD
-        this.gift$ = this.giftService.search(city, district, gender, age, cate, '', '').pipe(
-=======
         const keyword = x.keyword;
+        console.log("list:" +keyword);
         // console.log(city + " - " + district + " - gender: " + gender + " - age:" + age);
-        this.gift$ = this.giftService.search(city, district, gender, age, cate, keyword).pipe(
->>>>>>> c614d2ce3ac68dee9068a237c5ead569cd98b1e2
+        this.gift$ = this.giftService.search(city, district, gender, age, cate,'','',keyword).pipe(
           map(x => {
             this.pagination = x.pagination;
             return x.data;
@@ -105,7 +121,7 @@ export class ProductListComponent implements OnInit {
         const age = x.age;
         const cate = x.cate;
         // console.log(city + " - " + district + " - gender: " + gender + " - age:" + age);
-        this.gift$ = this.giftService.search(city, district, gender, age, cate, pageIndex,'').pipe(
+        this.gift$ = this.giftService.search(city, district, gender, age, cate, pageIndex,'','').pipe(
           map(x => {
             this.pagination = x.pagination;
             return x.data;

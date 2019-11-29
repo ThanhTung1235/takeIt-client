@@ -26,8 +26,6 @@
             "styles": [
               "node_modules/ngx-toastr/toastr.css",
               "src/assets/css/bootstrap.min.css",
-              "src/assets/css/slick.css",
-              "src/assets/css/slick-theme.css",
               "src/assets/css/font-awesome.min.css",
               "src/assets/css/style.css",
               "src/assets/css/profile.css",

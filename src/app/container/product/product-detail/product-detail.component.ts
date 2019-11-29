@@ -3,7 +3,7 @@ import { GiftService } from '../../../service/gift.service';
 import { Observable, Subscription } from 'rxjs';
 import { GiftResponse, Gift } from '../../../model/gift';
 import { map } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ExchangeRequest, ExchangeRequestResp } from 'src/app/model/exchange-request';
 import { Account } from 'src/app/model/account';
 import { City, District } from 'src/app/model/address';
@@ -18,7 +18,6 @@ import { noUndefined } from '@angular/compiler/src/util';
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
   gifts$: Observable<GiftResponse[]>;
-
   gift: GiftResponse;
   state: string;
   sub: Subscription;
@@ -33,14 +32,18 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   showRequest: boolean;
   cateName: string;
 
+  loader: boolean;
+
   constructor(
     private giftService: GiftService,
     private route: ActivatedRoute,
+    private router :Router,
     private toastService: ToastrService) {
     this.state = 'detail';
   }
 
   ngOnInit() {
+    this.loader = false;
     this.showRequest = true;
     this.giftId = +this.route.snapshot.paramMap.get('id');
     this.sub = this.giftService.getGift(this.giftId).subscribe(
@@ -70,14 +73,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   submitExchange(message) {
     const token = window.localStorage.getItem('_apikey');
-    // tslint:disable-next-line:triple-equals
     if (token != null || token != undefined) {
       this.exchange.message = message;
       this.giftP.id = this.giftId;
 
       this.giftService.sendExchageRequest(this.exchange).subscribe(
         (x) => {
-          // tslint:disable-next-line:triple-equals
           if (x.status == 201) {
             this.toastService.success('Quan tâm món đồ thành công bạn hãy chờ chủ nhân xác nhận nhé', '', {
               timeOut: 5000,
@@ -86,25 +87,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
           } else {
             this.toastService.error('Lỗi hệ thống', '', {
               timeOut: 5000
-            });
-          }
-          // tslint:disable-next-line:triple-equals
-          if (x.status == 500 && x.message != ' ') {
-            this.toastService.error(x.message, '', {
-              timeOut: 5000
-            });
-          }
-          // tslint:disable-next-line:triple-equals
-          if (x.status == 401) {
-            this.toastService.error('Bạn cần đăng nhập để sử dụng tính năng này', '', {
-              timeOut: 5000
-            });
-          }
-          // tslint:disable-next-line:triple-equals
-          if (x.status == 500) {
-            this.toastService.error('Lỗi hệ thống', '', {
-              timeOut: 5000,
-              positionClass: 'toast-top-right'
             });
           }
         }
@@ -116,16 +98,42 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     }
   }
   getGiftRelatedTo() {
-    this.gifts$ = this.giftService.search("", "", "", "", this.cateName, "", "",'').pipe(map(x => {
+    this.gifts$ = this.giftService.search("", "", "", "", this.cateName, "", "", '').pipe(map(x => {
       return x.data;
     }));
   }
 
-  confirmRequest() {
-    alert(1)
+  confirmRequest(exId) {
+    let isConfirm = confirm("Bạn có đồng ý cho");
+    let status = true;
+    this.giftService.confirmExchange(exId, status).subscribe(x => {
+      if (x.status == 200) {
+        alert("xác nhận thành công")
+        this.router.navigate(['/products']);
+      } else {
+        alert("lỗi hệ thống")
+      }
+      if (x != null) {
+        setInterval(function(){ 
+          window.location.reload();
+         }, 3000);
+      }
+    });
   }
-  cancelRequest() {
-    alert(2)
+  cancelRequest(exId) {
+    let status = false;
+    this.giftService.confirmExchange(exId, status).subscribe(x => {
+      if (x.status == 200) {
+        alert("Không chấp nhận trao đổi")
+      } else {
+        alert("lỗi hệ thống")
+      }
+      if (x != null) {
+        setInterval(function(){ 
+          window.location.reload();
+         }, 3000);
+      }
+    });
   }
 
   ngOnDestroy() {

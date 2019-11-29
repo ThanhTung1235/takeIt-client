@@ -94,15 +94,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
   getAccount() {
     this.sub = this.accountSerivce.getDetail().subscribe(x => this.account = x.data);
   }
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
-
   onSearchChage(event) {
     console.log(event.target.value);
     this.keyword = event.target.value;
   }
-  search(event){
-    this.router.navigate(['/products'], {queryParams: {keyword: this.keyword}});
+  search(event) {
+    alert(1);
+    this.router.navigate(['/products'], { queryParams: { keyword: this.keyword } });
+    
   }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+
 }

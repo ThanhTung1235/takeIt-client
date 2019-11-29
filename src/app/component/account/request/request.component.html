@@ -1,30 +1,57 @@
-<table class="table">
+<div *ngIf="owner != null">
+  <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Tên người nhận</th>
         <th scope="col">Lời nhắn</th>
         <th scope="col">Tên món đồ</th>
+        <th scope="col">Ảnh</th>
+        <th scope="col">Trạng thái</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
+      <tr *ngFor="let o of owner">
+        <td class="profile-td">{{o.accountName}}</td>
+        <td class="profile-td">{{o.message}}</td>
+        <td class="profile-td">{{o.giftName}}</td>
+        <td class="profile-td"><img [src]="o.thumbnail" class="img-fluid" width="150" alt=""></td>
+        <td class="profile-td">
+          <button class="btn"
+            [ngClass]="{'btn-warning': o.numberOfStatus == 0, 'btn-success': o.numberOfStatus == 1,'btn-danger': o.numberOfStatus == -1}">
+            {{o.status}}
+          </button>
+        </td>
+        <td class="profile-td" *ngIf="o.numberOfStatus == 0">
+          <a (click)="confirmRequest(o.id)" class="btn btn-success mr"><i class="fas fa-check-circle"></i></a>
+          <a (click)="cancelRequest(o.id)" class="btn btn-danger"><i class="fas fa-times-circle"></i></a>
+        </td>
       </tr>
     </tbody>
   </table>
+</div>
+<div *ngIf="receiver != null">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Tên người cho</th>
+        <th scope="col">Tên món đồ</th>
+        <th scope="col">Ảnh</th>
+        <th scope="col">Trạng thái</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of receiver">
+        <td class="profile-td">{{r?.ownerName}}</td>
+        <td class="profile-td">{{r?.giftName}}</td>
+        <td class="profile-td"><img [src]="r.thumbnail" class="img-fluid" width="150" alt=""></td>
+        <td class="profile-td">
+          <button class="btn"
+            [ngClass]="{'btn-warning': r.numberOfStatus == 0, 'btn-success': r.numberOfStatus == 1,'btn-danger': r.numberOfStatus == -1}">
+            {{r.status}}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
